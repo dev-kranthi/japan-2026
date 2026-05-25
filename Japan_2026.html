@@ -1,0 +1,2899 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="japan">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<title>Japan 2026</title>
+<style>
+/* ═══════════════════════════════════════════════════════════
+   JAPAN 2026 — APP STYLES
+   Themes: japan (default) | minimal | dark overlay on both
+═══════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap');
+
+/* ── JAPAN THEME (default) ── */
+:root {
+  --font-display: 'Shippori Mincho', serif;
+  --font-body: 'DM Sans', sans-serif;
+
+  --bg: #F5F0E8;
+  --bg2: #EDE8DE;
+  --card: #FFFEF9;
+  --card2: #F9F5ED;
+  --border: rgba(0,0,0,0.08);
+  --border2: rgba(0,0,0,0.14);
+
+  --ink: #1C1410;
+  --ink2: #4A3F35;
+  --ink3: #8A7F75;
+  --ink4: #B8AFA5;
+
+  --vermillion: #C0392B;
+  --vermillion2: #E8503E;
+  --vermillion-soft: rgba(192,57,43,0.1);
+  --indigo: #1a1a3e;
+  --indigo2: #2d2d6b;
+  --gold: #C9A84C;
+  --gold-soft: rgba(201,168,76,0.15);
+  --sage: #5A7A5A;
+  --sage-soft: rgba(90,122,90,0.12);
+
+  --nav-bg: #1C1410;
+  --nav-text: rgba(255,255,255,0.5);
+  --nav-active: #C0392B;
+  --nav-active-text: #fff;
+
+  --header-bg: #1a1a3e;
+  --header-text: #F5F0E8;
+  --header-sub: rgba(245,240,232,0.6);
+
+  --phase-tokyo: #1a1a3e;
+  --phase-hakone: #2d5a27;
+  --phase-kyoto: #4a1a3e;
+  --phase-osaka: #3e2a1a;
+  --phase-nrt: #1a1a2e;
+  --phase-transit: #2a2a2a;
+
+  --radius: 16px;
+  --radius-sm: 10px;
+  --radius-xs: 6px;
+  --shadow: 0 2px 20px rgba(0,0,0,0.08);
+  --shadow-sm: 0 1px 8px rgba(0,0,0,0.05);
+  --shadow-lg: 0 8px 40px rgba(0,0,0,0.12);
+
+  --timeline-line: #E0D8CC;
+  --timeline-dot: #C0392B;
+
+  --tag-book: #FEF3F2; --tag-book-text: #C0392B; --tag-book-border: #FCA5A5;
+  --tag-maps: #F0FDF4; --tag-maps-text: #15803D; --tag-maps-border: #86EFAC;
+  --tag-nav: #EFF6FF; --tag-nav-text: #1D4ED8; --tag-nav-border: #93C5FD;
+  --tag-happy: #FFF0F8; --tag-happy-text: #BE185D; --tag-happy-border: #F9A8D4;
+  --tag-web: #F5F3FF; --tag-web-text: #6D28D9; --tag-web-border: #C4B5FD;
+  --tag-tide: #F0FDFA; --tag-tide-text: #0F766E; --tag-tide-border: #5EEAD4;
+
+  --urg-now: #FEF2F2; --urg-now-text: #991B1B; --urg-now-border: #FCA5A5;
+  --urg-soon: #FFFBEB; --urg-soon-text: #92400E; --urg-soon-border: #FCD34D;
+  --urg-ok: #F0FDF4; --urg-ok-text: #166534; --urg-ok-border: #86EFAC;
+}
+
+/* ── MINIMAL THEME ── */
+[data-theme="minimal"] {
+  --bg: #FAFAFA;
+  --bg2: #F0F0F0;
+  --card: #FFFFFF;
+  --card2: #F8F8F8;
+  --border: rgba(0,0,0,0.06);
+  --border2: rgba(0,0,0,0.1);
+
+  --ink: #111111;
+  --ink2: #444444;
+  --ink3: #888888;
+  --ink4: #BBBBBB;
+
+  --vermillion: #0066CC;
+  --vermillion2: #0080FF;
+  --vermillion-soft: rgba(0,102,204,0.08);
+  --gold: #0066CC;
+  --gold-soft: rgba(0,102,204,0.08);
+  --sage: #0066CC;
+  --sage-soft: rgba(0,102,204,0.08);
+
+  --nav-bg: #111111;
+  --nav-text: rgba(255,255,255,0.45);
+  --nav-active: #0066CC;
+  --nav-active-text: #ffffff;
+
+  --header-bg: #111111;
+  --header-text: #FFFFFF;
+  --header-sub: rgba(255,255,255,0.55);
+
+  --phase-tokyo: #222222;
+  --phase-hakone: #1a3a1a;
+  --phase-kyoto: #2a1a3a;
+  --phase-osaka: #3a2a1a;
+  --phase-nrt: #1a1a2a;
+  --phase-transit: #333333;
+
+  --timeline-line: #E0E0E0;
+  --timeline-dot: #0066CC;
+
+  --font-display: 'DM Sans', sans-serif;
+}
+
+/* ── DARK MODE ── */
+[data-dark="true"] {
+  --bg: #0F0F0F;
+  --bg2: #1A1A1A;
+  --card: #1E1E1E;
+  --card2: #252525;
+  --border: rgba(255,255,255,0.08);
+  --border2: rgba(255,255,255,0.14);
+
+  --ink: #F0ECE4;
+  --ink2: #B8AFA5;
+  --ink3: #7A7068;
+  --ink4: #4A4038;
+
+  --header-bg: #080808;
+  --nav-bg: #080808;
+
+  --timeline-line: #2A2A2A;
+  --shadow: 0 2px 20px rgba(0,0,0,0.4);
+  --shadow-sm: 0 1px 8px rgba(0,0,0,0.3);
+
+  --tag-book: #2A1414; --tag-book-text: #FCA5A5;
+  --tag-maps: #0F2A1A; --tag-maps-text: #86EFAC;
+  --tag-nav: #0F1A2A; --tag-nav-text: #93C5FD;
+  --tag-happy: #2A0F1A; --tag-happy-text: #F9A8D4;
+  --tag-web: #1A0F2A; --tag-web-text: #C4B5FD;
+  --tag-tide: #0F2A28; --tag-tide-text: #5EEAD4;
+
+  --urg-now: #2A0F0F; --urg-now-text: #FCA5A5;
+  --urg-soon: #2A200F; --urg-soon-text: #FCD34D;
+  --urg-ok: #0F2A1A; --urg-ok-text: #86EFAC;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   RESET & BASE
+═══════════════════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 16px; -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--ink);
+  min-height: 100dvh;
+  padding-bottom: 80px;
+  transition: background 0.3s, color 0.3s;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   HEADER
+═══════════════════════════════════════════════════════════ */
+.app-header {
+  background: var(--header-bg);
+  color: var(--header-text);
+  padding: 52px 20px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle pattern overlay for Japan theme */
+:root .app-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 20px,
+    rgba(255,255,255,0.015) 20px,
+    rgba(255,255,255,0.015) 21px
+  );
+  pointer-events: none;
+}
+
+[data-theme="minimal"] .app-header::before { display: none; }
+
+.app-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--vermillion), transparent 60%);
+}
+
+[data-theme="minimal"] .app-header::after {
+  background: linear-gradient(90deg, var(--vermillion), transparent 60%);
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.app-title {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--header-text);
+  line-height: 1.1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header-dates {
+  font-size: 12px;
+  color: var(--header-sub);
+  margin-top: 3px;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+.header-right {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.days-left-num {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--vermillion2);
+  line-height: 1;
+}
+
+.days-left-label {
+  font-size: 10px;
+  color: var(--header-sub);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 2px;
+}
+
+.phase-chip {
+  display: inline-block;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 99px;
+  padding: 2px 8px;
+  font-size: 10px;
+  color: var(--header-sub);
+  margin-top: 4px;
+}
+
+/* Progress bar */
+.progress-bar-wrap {
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.progress-label {
+  font-size: 10px;
+  color: var(--header-sub);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  white-space: nowrap;
+}
+
+.progress-track {
+  flex: 1;
+  height: 3px;
+  background: rgba(255,255,255,0.12);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--vermillion);
+  border-radius: 99px;
+  transition: width 0.8s cubic-bezier(0.4,0,0.2,1);
+}
+
+.progress-pct {
+  font-size: 10px;
+  color: var(--header-sub);
+  min-width: 28px;
+  text-align: right;
+}
+
+/* Theme & dark toggles */
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.theme-toggle-group {
+  display: flex;
+  background: rgba(255,255,255,0.08);
+  border-radius: 8px;
+  padding: 2px;
+  gap: 1px;
+  flex: 1;
+}
+
+.theme-btn {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: rgba(255,255,255,0.45);
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 500;
+  padding: 5px 0;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.theme-btn.active {
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+}
+
+.dark-toggle {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 8px;
+  color: rgba(255,255,255,0.7);
+  font-size: 14px;
+  width: 34px; height: 34px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.dark-toggle:hover { background: rgba(255,255,255,0.14); }
+
+/* ═══════════════════════════════════════════════════════════
+   BOTTOM NAV
+═══════════════════════════════════════════════════════════ */
+.bottom-nav {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: var(--nav-bg);
+  display: flex;
+  padding: 8px 4px max(env(safe-area-inset-bottom), 8px);
+  z-index: 200;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.nav-btn {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--nav-text);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 4px 2px;
+  border-radius: 10px;
+  transition: all 0.2s;
+  font-family: var(--font-body);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.nav-btn .nav-icon {
+  width: 24px; height: 24px;
+  display: flex; align-items: center; justify-content: center;
+  transition: transform 0.2s;
+}
+
+.nav-btn .nav-icon svg {
+  width: 22px; height: 22px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: stroke 0.2s;
+}
+
+.nav-btn span.label {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: color 0.2s;
+}
+
+.nav-btn.active {
+  color: var(--nav-active-text);
+}
+
+.nav-btn.active .nav-icon svg {
+  stroke: var(--nav-active);
+}
+
+.nav-btn.active .label {
+  color: var(--nav-active);
+}
+
+.nav-btn.active .nav-icon {
+  transform: translateY(-1px);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   PAGES
+═══════════════════════════════════════════════════════════ */
+.page { display: none; padding: 16px 16px 8px; }
+.page.active { display: block; }
+
+/* ═══════════════════════════════════════════════════════════
+   OVERVIEW
+═══════════════════════════════════════════════════════════ */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.stat-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 14px 10px;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.stat-num {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 10px;
+  color: var(--ink3);
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 500;
+}
+
+.section-title {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--ink3);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 20px 0 10px;
+}
+
+/* Overview phase cards */
+.overview-phase {
+  display: block;
+  width: 100%;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  margin-bottom: 10px;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.overview-phase::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--vermillion);
+  opacity: 0.6;
+}
+
+.overview-phase-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.overview-phase-icon {
+  font-size: 18px;
+  width: 34px; height: 34px;
+  background: var(--vermillion-soft);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+.overview-phase-name {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.2;
+}
+
+.overview-phase-dates {
+  font-size: 11px;
+  color: var(--ink3);
+  margin-top: 2px;
+}
+
+.overview-items {
+  font-size: 13px;
+  color: var(--ink2);
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.link-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.link-row.mt4 { margin-top: 4px; }
+
+/* Notes / info rows in overview */
+.info-row {
+  display: flex; gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+  align-items: flex-start;
+}
+
+.info-row:last-child { border-bottom: none; }
+
+.info-label {
+  font-weight: 600;
+  color: var(--ink3);
+  min-width: 100px;
+  flex-shrink: 0;
+  font-size: 12px;
+}
+
+.info-val {
+  color: var(--ink2);
+  flex: 1;
+  line-height: 1.5;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   PHASE BANNERS (in Days tab)
+═══════════════════════════════════════════════════════════ */
+.phase-banner {
+  margin: 20px -16px 12px;
+  padding: 12px 20px;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.9);
+  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+}
+
+.phase-banner::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 20px; right: 20px;
+  height: 1px;
+  background: rgba(255,255,255,0.1);
+}
+
+.phase-tokyo { background: var(--phase-tokyo); }
+.phase-hakone { background: var(--phase-hakone); }
+.phase-kyoto { background: var(--phase-kyoto); }
+.phase-osaka { background: var(--phase-osaka); }
+.phase-transit { background: var(--phase-transit); }
+.phase-nrt { background: var(--phase-nrt); }
+
+/* ═══════════════════════════════════════════════════════════
+   DAY CARDS — TIMELINE STYLE
+═══════════════════════════════════════════════════════════ */
+.day-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 10px;
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+
+.day-card.swap-selected {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 2px var(--gold-soft);
+}
+
+.day-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+.day-check {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  border: 2px solid var(--border2);
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px;
+  color: var(--ink3);
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.day-check.done {
+  background: var(--sage);
+  border-color: var(--sage);
+  color: white;
+}
+
+.day-meta { flex: 1; min-width: 0; }
+
+.day-num {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--ink3);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: 2px;
+}
+
+.day-title {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.day-weather {
+  font-size: 11px;
+  color: var(--ink3);
+  margin-top: 3px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.weather-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: var(--ink3);
+}
+
+.weather-temp {
+  font-weight: 600;
+  color: var(--ink2);
+  font-size: 12px;
+}
+
+.day-chevron {
+  font-size: 12px;
+  color: var(--ink4);
+  transition: transform 0.25s;
+  flex-shrink: 0;
+}
+
+.day-card.open .day-chevron { transform: rotate(180deg); }
+
+/* ── SWAP BUTTON ── */
+.day-swap-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 9px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 99px;
+  background: var(--gold-soft);
+  color: var(--gold);
+  border: 1px solid rgba(201,168,76,0.3);
+  cursor: pointer;
+  transition: all 0.15s;
+  margin-top: 3px;
+  font-family: var(--font-body);
+}
+
+/* ── DAY BODY ── */
+.day-body { display: none; }
+.day-card.open .day-body { display: block; }
+.day-section {
+  padding: 0 16px 14px;
+}
+
+.day-section-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--ink3);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 10px 0 8px;
+  border-top: 1px solid var(--border);
+}
+
+.dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+.dot-blue { background: var(--vermillion); }
+.dot-teal { background: var(--sage); }
+.dot-amber { background: var(--gold); }
+
+/* ── TIMELINE ACTIVITIES ── */
+.timeline-wrap {
+  position: relative;
+  padding-left: 20px;
+}
+
+.timeline-wrap::before {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: var(--timeline-line);
+}
+
+.act-row {
+  position: relative;
+  padding: 6px 0 6px 16px;
+  cursor: grab;
+  transition: opacity 0.15s;
+}
+
+.act-row::before {
+  content: '';
+  position: absolute;
+  left: -2px;
+  top: 13px;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--timeline-dot);
+  opacity: 0.5;
+}
+
+.act-row.dragging { opacity: 0.4; cursor: grabbing; }
+.act-row.drag-over { border-top: 2px solid var(--vermillion); }
+
+.act-time {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--vermillion);
+  letter-spacing: 0.04em;
+  margin-bottom: 2px;
+  font-family: var(--font-body);
+}
+
+.act-content {
+  font-size: 13px;
+  color: var(--ink2);
+  line-height: 1.55;
+  flex: 1;
+}
+
+.act-content b { color: var(--ink); font-weight: 600; }
+
+.act-check {
+  position: absolute;
+  right: 0;
+  top: 8px;
+  width: 18px; height: 18px;
+  border-radius: 4px;
+  border: 1.5px solid var(--border2);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px;
+  transition: all 0.15s;
+  background: var(--card);
+  flex-shrink: 0;
+}
+
+.act-check.done {
+  background: var(--sage);
+  border-color: var(--sage);
+  color: white;
+}
+
+.act-check.done::after { content: '✓'; font-size: 10px; color: white; }
+
+/* Sleeping tonight / transport info */
+.stay-card {
+  background: var(--card2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  margin-top: 6px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   LINK BUTTONS
+═══════════════════════════════════════════════════════════ */
+.link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 10px;
+  border-radius: 99px;
+  font-size: 11px;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: var(--font-body);
+  white-space: nowrap;
+}
+
+.link-book { background: var(--tag-book); color: var(--tag-book-text); border-color: var(--tag-book-border); }
+.link-maps { background: var(--tag-maps); color: var(--tag-maps-text); border-color: var(--tag-maps-border); }
+.link-nav  { background: var(--tag-nav);  color: var(--tag-nav-text);  border-color: var(--tag-nav-border);  }
+.link-happy{ background: var(--tag-happy);color: var(--tag-happy-text);border-color: var(--tag-happy-border);}
+.link-web  { background: var(--tag-web);  color: var(--tag-web-text);  border-color: var(--tag-web-border);  }
+.link-tide { background: var(--tag-tide); color: var(--tag-tide-text); border-color: var(--tag-tide-border); }
+
+/* ═══════════════════════════════════════════════════════════
+   BOOKINGS
+═══════════════════════════════════════════════════════════ */
+.booking-progress {
+  font-size: 12px;
+  color: var(--ink3);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.booking-item {
+  display: flex;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  align-items: flex-start;
+}
+
+.booking-item:last-child { border-bottom: none; }
+
+.booking-check {
+  width: 22px; height: 22px;
+  border-radius: 6px;
+  border: 1.5px solid var(--border2);
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.15s;
+  margin-top: 1px;
+}
+
+.booking-check.done {
+  background: var(--sage);
+  border-color: var(--sage);
+  color: white;
+}
+
+.booking-meta { flex: 1; min-width: 0; }
+
+.booking-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.3;
+  margin-bottom: 4px;
+}
+
+.booking-detail {
+  font-size: 12px;
+  color: var(--ink3);
+  line-height: 1.5;
+  margin-bottom: 6px;
+}
+
+.urg-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 99px;
+  font-size: 10px;
+  font-weight: 600;
+  border: 1px solid transparent;
+  flex-shrink: 0;
+}
+
+.urg-now { background: var(--urg-now); color: var(--urg-now-text); border-color: var(--urg-now-border); }
+.urg-soon{ background: var(--urg-soon);color: var(--urg-soon-text);border-color: var(--urg-soon-border);}
+.urg-ok  { background: var(--urg-ok);  color: var(--urg-ok-text);  border-color: var(--urg-ok-border);  }
+
+/* ═══════════════════════════════════════════════════════════
+   HIGHLIGHTS / SON TAB
+═══════════════════════════════════════════════════════════ */
+.highlight-card {
+  display: flex;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  align-items: flex-start;
+}
+
+.highlight-icon {
+  font-size: 22px;
+  width: 40px; height: 40px;
+  background: var(--vermillion-soft);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+.highlight-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  font-family: var(--font-display);
+}
+
+.highlight-day {
+  font-size: 11px;
+  color: var(--ink3);
+  margin: 2px 0;
+}
+
+.highlight-desc {
+  font-size: 12px;
+  color: var(--ink2);
+  line-height: 1.5;
+  margin-top: 3px;
+}
+
+.highlight-check {
+  width: 22px; height: 22px;
+  border-radius: 6px;
+  border: 1.5px solid var(--border2);
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.15s;
+  margin-top: 2px;
+}
+
+.highlight-check.done {
+  background: var(--vermillion);
+  border-color: var(--vermillion);
+  color: white;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   FOOD GUIDE
+═══════════════════════════════════════════════════════════ */
+.food-city-header {
+  padding: 14px 0 8px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 8px;
+}
+
+.food-city-header h3 {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.rating { font-size: 11px; color: var(--ink3); margin-top: 2px; }
+
+.food-item {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.food-item:last-child { border-bottom: none; }
+
+.food-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 3px;
+}
+
+.food-detail {
+  font-size: 12px;
+  color: var(--ink2);
+  line-height: 1.5;
+}
+
+.food-who {
+  display: inline-block;
+  padding: 1px 6px;
+  border-radius: 99px;
+  font-size: 10px;
+  font-weight: 600;
+  margin-left: 4px;
+}
+
+.food-who-a { background: var(--vermillion-soft); color: var(--vermillion); }
+.food-who-v { background: var(--sage-soft); color: var(--sage); }
+.food-who-k { background: var(--gold-soft); color: var(--gold); }
+
+/* ═══════════════════════════════════════════════════════════
+   PHRASES
+═══════════════════════════════════════════════════════════ */
+.phrase-card {
+  background: var(--card2);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  margin-bottom: 8px;
+  border: 1px solid var(--border);
+}
+
+.phrase-jp {
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--ink);
+  margin-bottom: 3px;
+}
+
+.phrase-romaji { font-size: 12px; color: var(--vermillion); font-style: italic; margin-bottom: 2px; }
+.phrase-en { font-size: 12px; color: var(--ink3); }
+
+/* ═══════════════════════════════════════════════════════════
+   TOAST
+═══════════════════════════════════════════════════════════ */
+.toast {
+  position: fixed;
+  bottom: 90px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--ink);
+  color: var(--bg);
+  padding: 8px 18px;
+  border-radius: 99px;
+  font-size: 13px;
+  font-weight: 500;
+  opacity: 0;
+  transition: all 0.25s;
+  pointer-events: none;
+  z-index: 999;
+  white-space: nowrap;
+  font-family: var(--font-body);
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   NOTES
+═══════════════════════════════════════════════════════════ */
+.day-notes-wrap {
+  margin: 4px 16px 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.day-notes-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--ink3);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.day-notes-input {
+  width: 100%;
+  min-height: 52px;
+  padding: 8px 10px;
+  font-size: 13px;
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--bg);
+  border: 1px solid var(--border2);
+  border-radius: var(--radius-sm);
+  resize: none;
+  transition: border-color 0.2s;
+  line-height: 1.5;
+}
+
+.day-notes-input:focus {
+  outline: none;
+  border-color: var(--vermillion);
+}
+
+.day-notes-input::placeholder { color: var(--ink4); font-style: italic; }
+
+.notes-saved-badge {
+  font-size: 10px;
+  color: var(--sage);
+  margin-left: auto;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   NAME BADGES
+═══════════════════════════════════════════════════════════ */
+.who-all { display: inline-block; font-size: 10px; font-weight: 600; padding: 1px 5px; border-radius: 99px; background: var(--sage-soft); color: var(--sage); }
+.who-dad { display: inline-block; font-size: 10px; font-weight: 600; padding: 1px 5px; border-radius: 99px; background: var(--gold-soft); color: var(--gold); }
+.who-mum { display: inline-block; font-size: 10px; font-weight: 600; padding: 1px 5px; border-radius: 99px; background: var(--vermillion-soft); color: var(--vermillion); }
+.who-son { display: inline-block; font-size: 10px; font-weight: 600; padding: 1px 5px; border-radius: 99px; background: var(--gold-soft); color: var(--gold); }
+
+/* ═══════════════════════════════════════════════════════════
+   NOTE BOXES
+═══════════════════════════════════════════════════════════ */
+.note {
+  background: var(--card2);
+  border-left: 3px solid var(--border2);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 10px 12px;
+  margin: 6px 0;
+  font-size: 13px;
+  color: var(--ink2);
+  line-height: 1.5;
+}
+
+.note-blue  { border-left-color: var(--vermillion); }
+.note-green { border-left-color: var(--sage); }
+.note-amber { border-left-color: var(--gold); }
+
+/* ═══════════════════════════════════════════════════════════
+   MISC
+═══════════════════════════════════════════════════════════ */
+.app-wrap { max-width: 480px; margin: 0 auto; }
+
+/* Drag handle hint */
+.act-row:hover .act-time { opacity: 0.7; }
+
+/* Smooth transitions */
+.day-card, .stat-card, .overview-phase, .booking-item, .highlight-card {
+  transition: box-shadow 0.2s, background 0.3s, border-color 0.3s;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 99px; }
+
+
+
+/* ── EXPENSES ── */
+.exp-filter {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 99px; padding: 4px 12px; font-size: 11px;
+  font-weight: 500; font-family: var(--font-body);
+  color: var(--ink3); cursor: pointer; transition: all 0.15s;
+}
+.exp-filter.active { background: var(--vermillion); color: white; border-color: var(--vermillion); }
+.exp-row {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 0; border-bottom: 1px solid var(--border);
+  cursor: pointer;
+}
+.exp-row:active { opacity: 0.6; }
+.exp-cat-dot {
+  width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+}
+.exp-info { flex: 1; min-width: 0; }
+.exp-name { font-size: 13px; font-weight: 500; color: var(--ink); }
+.exp-meta { font-size: 11px; color: var(--ink3); margin-top: 1px; }
+.exp-amount { font-size: 14px; font-weight: 600; color: var(--ink); font-family: var(--font-display); }
+
+</style>
+</head>
+<body>
+
+<!-- ═══════════ HEADER ═══════════ -->
+<div class="app-header">
+  <div class="header-top">
+    <div>
+      <div class="app-title">🇯🇵 Japan 2026</div>
+      <div class="header-dates">27 May – 10 June · Family of 3</div>
+    </div>
+    <div class="header-right">
+      <div class="days-left-num" id="days-left"></div>
+      <div class="days-left-label" id="phase-label">days to go</div>
+    </div>
+  </div>
+  <div class="progress-bar-wrap">
+    <span class="progress-label">Trip progress</span>
+    <div class="progress-track"><div class="progress-fill" id="prog-fill" style="width:0%"></div></div>
+    <span class="progress-pct" id="prog-pct">0%</span>
+  </div>
+  <div class="header-controls">
+    <div class="theme-toggle-group">
+      <button class="theme-btn active" id="btn-japan" onclick="setTheme('japan')">🏯 Japan</button>
+      <button class="theme-btn" id="btn-minimal" onclick="setTheme('minimal')">◻ Minimal</button>
+    </div>
+    <button class="dark-toggle" id="dark-toggle" onclick="toggleDark()" title="Toggle dark mode">🌙</button>
+  </div>
+</div>
+
+<!-- ═══════════ PAGE: OVERVIEW ═══════════ -->
+<div id="page-overview" class="page active">
+  <div class="stats-row">
+    <div class="stat-card"><div class="stat-num">14</div><div class="stat-label">Nights</div></div>
+    <div class="stat-card"><div class="stat-num">6</div><div class="stat-label">Cities</div></div>
+    <div class="stat-card"><div class="stat-num" id="stat-done">0</div><div class="stat-label">Days Done</div></div>
+  </div>
+
+
+
+  <div class="section-title">Phases</div>
+
+  <div class="overview-phase">
+    <div class="overview-phase-header"><div class="overview-phase-icon">🗼</div><div><div class="overview-phase-name">Tokyo</div><div class="overview-phase-dates">Days 1–4  ·  27–31 May  ·  5 nights (book from 26 May)</div></div></div>
+    <div class="overview-items">DisneySea · teamLab Borderless · Senso-ji · Seiko Museum · Akihabara · Tokyo Skytree · Meiji Shrine</div>
+    <div class="link-row mt4">
+      <a href="https://maps.app.goo.gl/JapanTokyo" class="link-btn link-maps" onclick="openMaps('35.6762,139.6503','Tokyo, Japan');return false;">📍 Tokyo Map</a>
+      <a href="https://happycow.net/asia/japan/tokyo/" target="_blank" class="link-btn link-happy">🥗 HappyCow Tokyo</a>
+    </div>
+  </div>
+
+  <div class="overview-phase">
+    <div class="overview-phase-header"><div class="overview-phase-icon">🏔</div><div><div class="overview-phase-name">Hakone</div><div class="overview-phase-dates">Days 5–6  ·  31 May–2 Jun  ·  2 nights · Car</div></div></div>
+    <div class="overview-items">Romancecar OR Car rental · Ropeway over Owakudani · Lake Ashi pirate cruise · Open Air Museum · Private onsen · Kaiseki dinner</div>
+    <div class="link-row mt4">
+      <a href="https://maps.app.goo.gl/Hakone" class="link-btn link-maps" onclick="openMaps('35.2323,139.1069','Hakone, Japan');return false;">📍 Hakone Map</a>
+    </div>
+  </div>
+
+  <div class="overview-phase">
+    <div class="overview-phase-header"><div class="overview-phase-icon">⛩</div><div><div class="overview-phase-name">Kyoto</div><div class="overview-phase-dates">Days 7–11  ·  2–7 Jun  ·  4 nights</div></div></div>
+    <div class="overview-items">USJ day trip (Wed) ✅ · Kiyomizu-dera · Kimono · Fushimi Inari · Arashiyama · Bamboo · Shigetsu lunch · Torokko Train · Miyama thatched village · Ohara Sanzen-in · Lake Biwa · Hikone Castle · Railway Museum · Daitoku-ji · Hanamikoji-dori</div>
+    <div class="link-row mt4">
+      <a href="https://maps.app.goo.gl/Kyoto" class="link-btn link-maps" onclick="openMaps('35.0116,135.7681','Kyoto, Japan');return false;">📍 Kyoto Map</a>
+      <a href="https://happycow.net/asia/japan/kyoto/" target="_blank" class="link-btn link-happy">🥗 HappyCow Kyoto</a>
+    </div>
+  </div>
+
+  <div class="overview-phase">
+    <div class="overview-phase-header"><div class="overview-phase-icon">🎡</div><div><div class="overview-phase-name">Lake Biwa · Hikone · Osaka</div><div class="overview-phase-dates">Days 12–13  ·  7–8 Jun  ·  1 night Osaka  ·  Car final day</div></div></div>
+    <div class="overview-items">Lake Biwa western shore · Biwako Terrace cable car · Hikone Castle · Return car Kyoto · Osaka Castle · Dotonbori street food evening</div>
+    <div class="link-row mt4">
+      <a href="#" onclick="openMaps('35.2167,135.9500','Biwako Terrace Shiga Japan');return false;" class="link-btn link-maps">📍 Biwako Terrace</a>
+      <a href="#" onclick="openMaps('35.2763,136.2539','Hikone Castle');return false;" class="link-btn link-maps">📍 Hikone Castle</a>
+      <a href="#" onclick="openMaps('34.6687,135.5014','Dotonbori Osaka');return false;" class="link-btn link-maps">📍 Dotonbori</a>
+    </div>
+  </div>
+  <div class="overview-phase">
+    <div class="overview-phase-header"><div class="overview-phase-icon">✈</div><div><div class="overview-phase-name">Nara · KIX Flight · NRT Hotel</div><div class="overview-phase-dates">Day 13  ·  8 Jun  ·  2 nights NRT hotel</div></div></div>
+    <div class="overview-items">Check out Osaka · Nara Deer Park · Todai-ji · Kasuga Taisha · Yoshikien Garden · Farewell Chibo dinner Dotonbori · Nankai Rapi:t→KIX · Evening flight KIX→NRT · Land NRT ~21:45</div>
+    <div class="link-row mt4">
+      <a href="https://fly.peach.com" target="_blank" class="link-btn link-book">✈ Peach Airlines</a>
+      <a href="https://www.jetstar.com/jp/en/home" target="_blank" class="link-btn link-book">✈ Jetstar Japan</a>
+      <a href="#" onclick="openMaps('34.6851,135.8399','Nara Deer Park');return false;" class="link-btn link-maps">📍 Nara Deer Park</a>
+    </div>
+  </div>
+  <div class="overview-phase">
+    <div class="overview-phase-header"><div class="overview-phase-icon">🗼</div><div><div class="overview-phase-name">Tokyo Final Day</div><div class="overview-phase-dates">Day 14  ·  9 Jun 2026 (Tue)  ·  Transit → NRT Hotel</div></div></div>
+    <div class="overview-items">Wake at NRT hotel · Narita Express → Tokyo · Grand Seiko Ginza · Isetan Shinjuku · Matsumoto Kiyoshi · Akihabara · Tokyo Station omiyage floor · Narita Express back to NRT</div>
+    <div class="link-row mt4">
+      <a href="https://www.ecbo.jp/cloak/en" target="_blank" class="link-btn link-web">🧳 ecbo cloak</a>
+      <a href="https://maps.app.goo.gl/TokyoStation" class="link-btn link-maps" onclick="openMaps('35.6812,139.7671','Tokyo Station, Japan');return false;">📍 Tokyo Station</a>
+    </div>
+  </div>
+
+  <div class="section-title">Key Apps to Install</div>
+  <div style="background:var(--card-bg);border-radius:var(--radius);padding:14px 16px;border:1px solid var(--border);box-shadow:var(--shadow-sm);margin-bottom:16px;">
+    <div class="info-row"><div class="info-label">Google Maps</div><div class="info-val">Download offline maps for Tokyo, Kyoto, Osaka</div></div>
+    <div class="info-row"><div class="info-label">Google Translate</div><div class="info-val">Download Japanese offline pack + use camera mode for menus</div></div>
+    <div class="info-row"><div class="info-label">HappyCow</div><div class="info-val">Vegetarian restaurant finder by GPS location</div></div>
+    <div class="info-row"><div class="info-label">Disney app</div><div class="info-val">Switch App Store to Japan to download — needed for Premier Access</div></div>
+    <div class="info-row"><div class="info-label">USJ app</div><div class="info-val">Nintendo World Entry Pass + register Power-Up Band</div></div>
+    <div class="info-row"><div class="info-label">ecbo cloak</div><div class="info-val">Pre-book luggage storage at Tokyo Station on Day 14</div></div>
+    <div class="info-row"><div class="info-label">allergyeats.com</div><div class="info-val">Print dietary cards before departure — Japanese allergy card for restaurants</div></div>
+  </div>
+</div><!-- end page-overview -->
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- PAGE: DAYS -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div
+</div>
+
+<!-- ═══════════ PAGE: DAYS ═══════════ -->
+<div id="page-days" class="page">
+
+<div class="phase-banner phase-tokyo">🗼 Phase 1 — Tokyo · Days 1–4 · 27–31 May 2026 · 5 nights (book from 26 May)</div>
+
+<div class="day-card" id="day-1">
+  <div class="day-header" onclick="toggleDay(1)">
+    <div class="day-check" id="daycheck-1" onclick="toggleDayDone(event,1)"></div>
+    <div class="day-meta">
+      <div class="day-num">Day 1  ·  27 May 2026 (Wed)</div>
+      <div class="day-title">Arrival — HND · Orient · Rest</div>
+      <div class="day-weather">☀ Clear 22°C</div>
+    </div>
+    <div class="day-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+  </div>
+  <div class="day-body">
+    <div class="day-section">
+      <div class="day-section-title"><div class="dot dot-blue"></div>Activities</div>
+      <div class="timeline-wrap"><div class="act-row"><div class="act-time">01:05</div><div class="act-content"><b>Land HND.</b> Pick up Welcome Suica IC card at kiosk before exiting arrivals. Load ¥5,000. Works on every train, bus, taxi, and convenience store.</div><div class="act-check" onclick="toggleAct(event,'1-1')"></div></div>
+      <div class="act-row"><div class="act-time">02:00</div><div class="act-content"><b>Taxi to hotel (Oshiage)</b> — ¥10,000–12,000 for family. 20–25 min. Request large van.</div><div class="act-check" onclick="toggleAct(event,'1-2')"></div></div>
+      <div class="act-row"><div class="act-time">Late AM</div><div class="act-content"><b>Convenience store breakfast.</b> Shilpa & Ariv: try Natural Lawson (best plant-based range). Kranthi: salmon onigiri.</div><div class="act-check" onclick="toggleAct(event,'1-3')"></div></div>
+      <div class="act-row"><div class="act-time">Afternoon</div><div class="act-content"><b>Shibuya scramble & Harajuku Takeshita Street.</b> Light first afternoon, no agenda.</div><div class="act-check" onclick="toggleAct(event,'1-4')"></div></div>
+      <div class="act-row"><div class="act-time">19:00</div><div class="act-content"><b>Dinner: T's TanTan, Tokyo Station.</b> 100% vegan ramen — whole family eats the same menu. Zero navigation on Day 1.</div><div class="act-check" onclick="toggleAct(event,'1-5')"></div></div>
+    </div>
+    <div class="day-section">
+      <div class="day-section-title"><div class="dot dot-teal"></div>Sleeping Tonight</div>
+      <div class="info-row"><div class="info-label">Area</div><div class="info-val">Shinjuku or Asakusa — within 5-min walk of a major station</div></div>
+      <div class="link-row"><a href="https://www.booking.com/searchresults.html?dest_id=-246227&dest_type=city&checkin=2026-05-27&checkout=2025-05-31&group_adults=3&no_rooms=1" target="_blank" class="link-btn link-book">🏨 Booking.com Tokyo</a></div>
+    </div>
+    <div class="day-section">
+      <div class="day-section-title"><div class="dot dot-blue"></div>Getting Here</div>
+      <div class="info-row"><div class="info-label">HND → Hotel</div><div class="info-val">Night taxi ¥5,500. From Day 2: Keikyu monorail ¥500–700.</div></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="day-card" id="day-2">
+  <div class="day-header" onclick="toggleDay(2)">
+    <div class="day-check" id="daycheck-2" onclick="toggleDayDone(event,2)"></div>
+    <div class="day-meta">
+      <div class="day-num">Day 2  ·  28 May 2026 (Thu)</div>
+      <div class="day-title">DisneySea — Full Day 🎢</div>
+      <div class="day-weather">☀ Sunny 25°C — perfect park weather</div>
+    </div>
+    <div class="day-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+  </div>
+  <div class="day-body">
+    <div class="day-section">
+      <div class="day-section-title"><div class="dot dot-blue"></div>Activities</div>
+      <div class="timeline-wrap"><div class="act-row"><div class="act-time">07:15</div><div class="act-content"><b>JR Keiyō Line: Tokyo Station → Maihama</b> (15 min, ¥220 pp). Disney Resort monorail → DisneySea (¥260 pp). Queue at gates by 08:10.</div><div class="act-check" onclick="toggleAct(event,'2-1')"></div></div>
+      <div class="act-row"><div class="act-time">09:01</div><div class="act-content"><b>Buy Disney Premier Access in-app</b> for Journey to the Center of the Earth (¥1,500 pp) immediately on entry. Queues hit 3 hours without it.</div><div class="act-check" onclick="toggleAct(event,'2-2')"></div></div>
+      <div class="act-row"><div class="act-time">AM</div><div class="act-content"><b>Indiana Jones → 20,000 Leagues → Tower of Terror → Journey to Center of Earth.</b></div><div class="act-check" onclick="toggleAct(event,'2-3')"></div></div>
+      <div class="act-row"><div class="act-time">12:30</div><div class="act-content"><b>Lunch: Zambini Brothers Ristorante.</b> Pre-booked 60 days ahead in Disney app. Shilpa &amp; Ariv: vegetarian pasta. Kranthi: pizza/fish.</div><div class="act-check" onclick="toggleAct(event,'2-4')"></div></div>
+      <div class="act-row"><div class="act-time">PM</div><div class="act-content"><b>Raging Spirits → Sindbad → Mermaid Lagoon.</b> Big Band Beat show lottery via app on the morning.</div><div class="act-check" onclick="toggleAct(event,'2-5')"></div></div>
+      <div class="act-row"><div class="act-time">20:00</div><div class="act-content"><b>Fantasmic! evening lagoon show.</b> Full finale. One souvenir — Ariv chooses.</div><div class="act-check" onclick="toggleAct(event,'2-6')"></div></div>
+      </div>
+    </div>
+    <div class="day-section">
+      <div class="day-section-title"><div class="dot dot-blue"></div>Maps &amp; Links</div>
+      <div class="link-row">
+        <a href="https://www.tokyodisneyresort.jp/en/" target="_blank" class="link-btn link-book">🏰 Disney Resort Site</a>
+        <a href="#" onclick="openMaps('35.6267,139.8840','Tokyo DisneySea');return false;" class="link-btn link-maps">📍 DisneySea</a>
+      </div>
+    </div>
+    <div class="day-section">
+      <div class="day-section-title"><div class="dot dot-teal"></div>Notes</div>
+      <div class="info-row"><div class="info-label">🚆 Getting there</div><div class="info-val">JR Keiyō Line: Tokyo Station → Maihama, 15 min, ¥220 pp. Disney monorail → DisneySea ¥260 pp.</div></div>
+      <div class="info-row"><div class="info-label">🍜 Food</div><div class="info-val">Lunch: Zambini Brothers (pre-booked). Dinner: in-park or convenience store on return.</div></div>
+      <div class="info-row"><div class="info-label">💡 App</div><div class="info-val">Disney app is Japan App Store only — switch App Store country before departure.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="day-card" id="day-3">
+  <div class="day-header" onclick="toggleDay(3)">
+    <div class="day-check" id="daycheck-3" onclick="toggleDayDone(event,3)"></div>
+    <div class="day-meta">
+      <div class="day-num">Day 3  ·  29 May 2026 (Fri)</div>
+      <div class="day-title">Meiji Shrine · Shinjuku Gyoen · Seiko Museum (Kranthi) · Akihabara (Shilpa+Ariv) · Skytree</div>
+      <div class="day-weather">☀ Sunny 24°C — best weather day of the trip</div>
+    </div>
+    <div class="day-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+  </div>
+  <div class="day-body">
+    <div class="day-section">
+      <div class="day-section-title"><div class="dot dot-blue"></div>Activities</div>
+      <div class="timeline-wrap"><div class="act-row"><div class="act-time">08:00</div><div class="act-content"><b>Meiji Jingu Shrine.</b> All. 700m forested path. Buy ema wish plaques (¥500 each) — Ariv hangs his wish.</div><div class="act-check" onclick="toggleAct(event,'3-1')"></div></div>
+      <div class="act-row"><div class="act-time">10:00</div><div class="act-content"><b>Harajuku Takeshita Street</b> — 45 min for Ariv.</div><div class="act-check" onclick="toggleAct(event,'3-2')"></div></div>
+      <div class="act-row"><div class="act-time">11:00</div><div class="act-content"><b>Shinjuku Gyoen National Garden.</b> All. ¥500 pp. Three garden styles — English, French formal, Japanese pond.</div><div class="act-check" onclick="toggleAct(event,'3-3')"></div></div>
+      <div class="act-row"><div class="act-time">13:00</div><div class="act-content"><b>Lunch: Omoide Yokocho, Shinjuku.</b> Shilpa &amp; Ariv: "yasai kushiyaki" (vegetable skewers). Kranthi: chicken/seafood — confirm no pork.</div><div class="act-check" onclick="toggleAct(event,'3-4')"></div></div>
+      <div class="act-row"><div class="act-time">15:00</div><div class="act-content"><b>Seiko Museum Ginza.</b> Kranthi ⌚. FREE. 6-7-1 Ginza, 15 min by Metro. Grand Seiko Boutique Ginza 5-min walk — ask for Spring Drive demonstration.</div><div class="act-check" onclick="toggleAct(event,'3-5')"></div></div>
+      <div class="act-row"><div class="act-time">15:00</div><div class="act-content"><b>Akihabara.</b> Shilpa + Ariv. Multi-floor anime stores, Taito Station arcade, crane machines. 2 hours.</div><div class="act-check" onclick="toggleAct(event,'3-6')"></div></div>
+      <div class="act-row"><div class="act-time">17:30</div><div class="act-content"><b>Tokyo Skytree — sunset.</b> All. Pre-booked Tembo Deck. 350m. Mt Fuji visible southwest on clear days.</div><div class="act-check" onclick="toggleAct(event,'3-7')"></div></div>
+      <div class="act-row"><div class="act-time">20:00</div><div class="act-content"><b>Dinner: Conveyor belt sushi.</b> Shilpa &amp; Ariv: kappa maki, avocado, tamagoyaki, inari. Kranthi: full fish — no pork or beef.</div><div class="act-check" onclick="toggleAct(event,'3-8')"></div></div>
+      </div>
+    </div>
+    <div class="day-section">
+      <div class="day-section-title"><div class="dot dot-blue"></div>Maps &amp; Links</div>
+      <div class="link-row">
+        <a href="https://www.tokyo-skytree.jp/en/ticket/" target="_blank" class="link-btn link-book">🎟 Book Skytree</a>
+        <a href="#" onclick="openMaps('35.6764,139.6993','Meiji Jingu Shrine Tokyo');return false;" class="link-btn link-maps">📍 Meiji Shrine</a>
+        <a href="#" onclick="openMaps('35.6783,139.7699','Seiko Museum Ginza');return false;" class="link-btn link-maps">📍 Seiko Museum</a>
+        <a href="#" onclick="openMaps('35.6948,139.7709','Akihabara Electric Town Tokyo');return false;" class="link-btn link-maps">📍 Akihabara</a>
+        <a href="#" onclick="openMaps('35.7101,139.8107','Tokyo Skytree');return false;" class="link-btn link-maps">📍 Skytree</a>
+      </div>
+    </div>
+    <div class="day-section">
+      <div class="day-section-title"><div class="dot dot-teal"></div>Notes</div>
+      <div class="info-row"><div class="info-label">🚆 Transit</div><div class="info-val">Metro Marunouchi Line: Shinjuku → Ginza (Seiko Museum), 20 min, ¥210 pp.</div></div>
+      <div class="info-row"><div class="info-label">🍜 Food</div><div class="info-val">Lunch: Omoide Yokocho yakitori. Dinner: conveyor belt sushi near Skytree.</div></div>
+      <div class="info-row"><div class="info-label">💡 Note</div><div class="info-val">Skytree pre-booked at tokyo-skytree.jp — 17:30 sunset slot.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="day-card" id="day-4">
+  <div class="day-header" onclick="toggleDay(4)">
+    <div class="day-check" id="daycheck-4" onclick="toggleDayDone(event,4)"></div>
+    <div class="day-meta">
+      <div class="day-num">Day 4  ·  30 May 2026 (Sat)</div>
+      <div class="day-title">Senso-ji · Edo Museum · teamLab Borderless · Sometaro Dinner · Load Bags in Car</div>
+      <div class="day-weather">☀ Sunny 24°C</div>
+    </div>
+    <div class="day-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+  </div>
+  <div class="day-body">
+    <div class="day-section">
+      <div class="day-section-title"><div class="dot dot-blue"></div>Activities</div>
+      <div class="timeline-wrap"><div class="act-row"><div class="act-time">08:00</div><div class="act-content"><b>Senso-ji Temple, Asakusa.</b> All. Arrive before 09:00. Nakamise lane. Omikuji fortune slip for Ariv.</div><div class="act-check" onclick="toggleAct(event,'4-1')"></div></div>
+      <div class="act-row"><div class="act-time">09:30</div><div class="act-content"><b>Edo-Tokyo Museum.</b> ¥600 pp. Life-size 17th-century Edo streets. 90 min.</div><div class="act-check" onclick="toggleAct(event,'4-2')"></div></div>
+      <div class="act-row"><div class="act-time">12:00</div><div class="act-content"><b>Lunch: Nakamise food lane.</b> Shilpa &amp; Ariv: ningyo-yaki, matcha soft serve. Kranthi: grilled skewer stalls — confirm no pork.</div><div class="act-check" onclick="toggleAct(event,'4-3')"></div></div>
+      <div class="act-row"><div class="act-time">14:00</div><div class="act-content"><b>teamLab Borderless, Azabudai Hills.</b> All. Pre-booked 14:00 entry. Digital art rooms that react to movement. 2.5 hours.</div><div class="act-check" onclick="toggleAct(event,'4-4')"></div></div>
+      <div class="act-row"><div class="act-time">17:00</div><div class="act-content"><b>Pack bags and load into car tonight.</b> Picking up rental car at Shinjuku 08:00 tomorrow — load all bags then. No takuhaibin needed. Confirm car pickup time with Toyota Rent a Car Shinjuku.</div><div class="act-check" onclick="toggleAct(event,'4-5')"></div></div>
+      <div class="act-row"><div class="act-time">19:30</div><div class="act-content"><b>Dinner: Sometaro, Asakusa.</b> Shilpa &amp; Ariv: yasai okonomiyaki. Kranthi: seafood — confirm no pork. Cook at the table.</div><div class="act-check" onclick="toggleAct(event,'4-6')"></div></div>
+      </div>
+    </div>
+    <div class="day-section">
+      <div class="day-section-title"><div class="dot dot-blue"></div>Maps &amp; Links</div>
+      <div class="link-row">
+        <a href="https://borderless.teamlab.art" target="_blank" class="link-btn link-book">✨ teamLab Tickets</a>
+        <a href="#" onclick="openMaps('35.7147,139.7967','Senso-ji Temple Asakusa');return false;" class="link-btn link-maps">📍 Senso-ji</a>
+        <a href="#" onclick="openMaps('35.6561,139.7301','teamLab Borderless Azabudai Hills');return false;" class="link-btn link-maps">📍 teamLab</a>
+      </div>
+    </div>
+    <div class="day-section">
+      <div class="day-section-title"><div class="dot dot-teal"></div>Notes</div>
+      <div class="info-row"><div class="info-label">🚗 Car</div><div class="info-val">Pickup Toyota Rent a Car Shinjuku 08:00 tomorrow. No takuhaibin — bags go in the car.</div></div>
+      <div class="info-row"><div class="info-label">🍜 Food</div><div class="info-val">Lunch: Nakamise lane. Dinner: Sometaro okonomiyaki, Asakusa.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="phase-banner phase-hakone">🏔 Phase 2 — Hakone · Days 5–6 · 31 May–2 Jun 2026 · 2 nights ryokan · Car from Shinjuku</div>
+
+<div class="day-card" id="day-5">
+  <div class="day-header" onclick="toggleDay(5)">
+    <div class="day-check" id="daycheck-5" onclick="toggleDayDone(event,5)"></div>
+    <div class="day-meta">
+      <div class="day-num">Day 5  ·  31 May 2026 (Sun)</div>
+      <div class="day-title">Car Pickup Shinjuku · Kawaguchiko (Fuji) · Hakone · Ropeway · Lake Ashi · Hakone Skyline · Onsen · Kaiseki</div>
+      <div class="day-weather">⛅ 21°C · Mt Fuji: 40% chance of clear views</div>
+    </div>
+    <div class="day-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+  </div>
+  <div class="day-body">
+    <div class="day-section">
+      <div class="day-section-title"><div class="dot dot-blue"></div>Activities</div>
+      <div class="timeline-wrap"><div class="act-row"><div class="act-time">08:00</div><div class="act-content"><b>Pick up Toyota Rent a Car, Shinjuku branch.</b> All bags already in car from hotel. Request English GPS + ETC card at pickup. Drive west via Tomei Expressway. Tolls ~¥1,500 to Kawaguchiko.</div><div class="act-check" onclick="toggleAct(event,'5-1')"></div></div>
+      <div class="act-row"><div class="act-time">09:30</div><div class="act-content"><b>Lake Kawaguchiko — Fuji views.</b> All. Park at lakeside (free). Fuji reflected in the lake on clear mornings. One of the best unobstructed Fuji viewpoints in Japan. 45 min stop. Shilpa: best landscape photo of the trip.</div><div class="act-check" onclick="toggleAct(event,'5-2')"></div></div>
+      <div class="act-row"><div class="act-time">11:00</div><div class="act-content"><b>Drive Irohazaka — 28-hairpin switchback road into Hakone.</b> Dramatic mountain ascent. Use low gears on descent. Arrive ryokan ~11:30. Drop bags and change into yukata.</div><div class="act-check" onclick="toggleAct(event,'5-3')"></div></div>
+      <div class="act-row"><div class="act-time">12:00</div><div class="act-content"><b>Hakone Ropeway over Owakudani.</b> All. Active volcanic crater, sulfur vents, eerie steam. Buy kuro-tamago (black eggs boiled in volcanic springs — each adds 7 years to your life). Drive to ropeway — free parking.</div><div class="act-check" onclick="toggleAct(event,'5-4')"></div></div>
+      <div class="act-row"><div class="act-time">14:00</div><div class="act-content"><b>Lake Ashi pirate ship cruise.</b> All. Fuji reflected in the water on still days. Park at Moto-Hakone pier — free parking. 30 min cruise.</div><div class="act-check" onclick="toggleAct(event,'5-5')"></div></div>
+      <div class="act-row"><div class="act-time">15:30</div><div class="act-content"><b>Hakone Skyline drive.</b> All (in car). 5km ridge road, 58 bends, panoramic views of Fuji and Lake Ashi simultaneously. Drive at your own pace. Toll ¥360. Famed among driving enthusiasts — this road does not exist on the Free Pass circuit.</div><div class="act-check" onclick="toggleAct(event,'5-6')"></div></div>
+      <div class="act-row"><div class="act-time">16:30</div><div class="act-content"><b>Hakone Open Air Museum.</b> All. Henry Moore bronzes, Picasso pavilion, glass prism tower Ariv can climb inside. Free parking.</div><div class="act-check" onclick="toggleAct(event,'5-7')"></div></div>
+      <div class="act-row"><div class="act-time">18:00</div><div class="act-content"><b>Private family onsen (kashikiri).</b> Book 18:00 slot at check-in. Also book 06:00 slot for tomorrow morning.</div><div class="act-check" onclick="toggleAct(event,'5-8')"></div></div>
+      <div class="act-row"><div class="act-time">19:00</div><div class="act-content"><b>Kaiseki dinner at ryokan.</b> Shilpa &amp; Ariv: vegetarian kaiseki (pre-confirmed — no meat, no fish). Kranthi: standard kaiseki — no pork or beef (pre-confirmed). 7–10 courses placed individually.</div><div class="act-check" onclick="toggleAct(event,'5-9')"></div></div>
+      </div>
+    </div>
+    <div class="day-section">
+      <div class="day-section-title"><div class="dot dot-blue"></div>Maps &amp; Links</div>
+      <div class="link-row">
+        <a href="https://rent.toyota.co.jp/en/" target="_blank" class="link-btn link-book">🚗 Toyota Rent a Car</a>
+        <a href="#" onclick="openMaps('35.5073,138.7671','Lake Kawaguchiko Mt Fuji');return false;" class="link-btn link-maps">📍 Kawaguchiko</a>
+        <a href="#" onclick="openMaps('35.2432,139.0227','Hakone Ropeway Owakudani');return false;" class="link-btn link-maps">📍 Owakudani</a>
+        <a href="#" onclick="openMaps('35.1977,138.9889','Lake Ashi Hakone');return false;" class="link-btn link-maps">📍 Lake Ashi</a>
+        <a href="#" onclick="openMaps('35.2276,139.1069','Hakone Open Air Museum');return false;" class="link-btn link-maps">📍 Open Air Museum</a>
+      </div>
+    </div>
+    <div class="day-section">
+      <div class="day-section-title"><div class="dot dot-teal"></div>Notes</div>
+      <div class="info-row"><div class="info-label">🛏 Stay</div><div class="info-val">Hakone-Yumoto ryokan — Night 1 of 2. Book kashikiri 06:00 slot for tomorrow at check-in today. Dinner 19:00 and breakfast 08:00 are fixed times.</div></div>
+      <div class="info-row"><div class="info-label">🚗 Car</div><div class="info-val">Toyota Rent a Car Shinjuku pickup 08:00. ETC card for expressway tolls. Budget ¥3,000–4,000 for tolls today. Park at ryokan overnight.</div></div>
+      <div class="info-row"><div class="info-label">🍜 Food</div><div class="info-val">Lunch: Kawaguchiko lakeside café or Hakone convenience store. Dinner: kaiseki at ryokan.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="day-card" id="day-6">
+  <div class="day-header" onclick="toggleDay(6)">
+    <div class="day-check" id="daycheck-6" onclick="toggleDayDone(event,6)"></div>
+    <div class="day-meta">
+      <div class="day-num">Day 6  ·  1 Jun 2026 (Mon)</div>
+      <div class="day-title">Dawn Onsen · Ryokan Breakfast · Izu Eastern Coast Loop · Afternoon Ryokan · Second Onsen · Kaiseki</div>
+      <div class="day-weather">⛅ 21°C · Hakone N2 · Car day — Izu Peninsula coastal drive</div>
+    </div>
+    <div class="day-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+  </div>
+  <div class="day-body">
+    <div class="day-section">
+      <div class="day-section-title"><div class="dot dot-blue"></div>Activities</div>
+      <div class="timeline-wrap"><div class="act-row"><div class="act-time">06:00</div><div class="act-content"><b>Private family outdoor onsen — 06:00 slot.</b> All. Mountain mist, birdsong, total silence. Booked at check-in yesterday.</div><div class="act-check" onclick="toggleAct(event,'6-1')"></div></div>
+      <div class="act-row"><div class="act-time">08:00</div><div class="act-content"><b>Traditional ryokan breakfast.</b> Shilpa &amp; Ariv: vegetarian (confirmed night before). Kranthi: grilled fish — no pork or beef.</div><div class="act-check" onclick="toggleAct(event,'6-2')"></div></div>
+      <div class="act-row"><div class="act-time">10:00</div><div class="act-content"><b>Drive eastern Izu Peninsula — coastal loop.</b> Kranthi drives. Izu is 1 hour south of Hakone on Route 135. Dramatic rugged coastline, coastal cliffs, fishing villages.</div><div class="act-check" onclick="toggleAct(event,'6-3')"></div></div>
+      <div class="act-row"><div class="act-time">10:30</div><div class="act-content"><b>Atami — first stop.</b> Coastal onsen town on the bay. Walk the seafront, pick up fresh seafood snacks from harbour stalls. 30 min.</div><div class="act-check" onclick="toggleAct(event,'6-4')"></div></div>
+      <div class="act-row"><div class="act-time">11:30</div><div class="act-content"><b>Ito/Jogasaki Coast.</b> Shilpa's highlight. Volcanic rock coastline with suspension bridge over gorge, sea arches, dramatic wave-cut platforms. 45 min walk on cliff path.</div><div class="act-check" onclick="toggleAct(event,'6-5')"></div></div>
+      <div class="act-row"><div class="act-time">12:30</div><div class="act-content"><b>Lunch: fresh seafood on Izu coast.</b> Kranthi: grilled fish, seafood set — no pork. Shilpa &amp; Ariv: look for tofu set meals or fresh caught grilled fish (egg/dairy fine for lacto-ovo). Coastal restaurants have excellent fresh catch.</div><div class="act-check" onclick="toggleAct(event,'6-6')"></div></div>
+      <div class="act-row"><div class="act-time">14:30</div><div class="act-content"><b>Return to ryokan via Route 135 north → Odawara direction.</b> Scenic coastal drive back. Arrive ryokan ~15:30. Afternoon at leisure — relax in yukata, walk the ryokan gardens.</div><div class="act-check" onclick="toggleAct(event,'6-7')"></div></div>
+      <div class="act-row"><div class="act-time">17:00</div><div class="act-content"><b>Second private onsen session.</b> Request an afternoon slot at reception on arrival back.</div><div class="act-check" onclick="toggleAct(event,'6-8')"></div></div>
+      <div class="act-row"><div class="act-time">19:00</div><div class="act-content"><b>Kaiseki dinner — Night 2.</b> Same format as last night. Confirm tomorrow's early breakfast (08:00) and car departure time with ryokan staff.</div><div class="act-check" onclick="toggleAct(event,'6-9')"></div></div>
+      </div>
+    </div>
+    <div class="day-section">
+      <div class="day-section-title"><div class="dot dot-blue"></div>Maps &amp; Links</div>
+      <div class="link-row">
+        <a href="#" onclick="openMaps('35.0998,139.0720','Atami Shizuoka Japan');return false;" class="link-btn link-maps">📍 Atami</a>
+        <a href="#" onclick="openMaps('34.9247,139.1157','Jogasaki Coast Izu');return false;" class="link-btn link-maps">📍 Jogasaki Coast</a>
+        <a href="#" onclick="openMaps('34.9762,139.0998','Ito Shizuoka Japan');return false;" class="link-btn link-maps">📍 Ito</a>
+      </div>
+    </div>
+    <div class="day-section">
+      <div class="day-section-title"><div class="dot dot-teal"></div>Notes</div>
+      <div class="info-row"><div class="info-label">🛏 Stay</div><div class="info-val">Same Hakone ryokan — Night 2 of 2. Check out tomorrow morning.</div></div>
+      <div class="info-row"><div class="info-label">🚗 Car</div><div class="info-val">Car parked at ryokan overnight. Izu loop ~120km round trip from Hakone. No expressway needed — scenic Route 135 along coast.</div></div>
+      <div class="info-row"><div class="info-label">🍜 Food</div><div class="info-val">Lunch: fresh seafood on Izu coast. Dinner: kaiseki at ryokan (fixed at 19:00).</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="phase-banner phase-kyoto">⛩ Phase 3 — Kyoto · Days 7–11 · 2–7 Jun 2026 · 4 nights · USJ Wed 3 Jun ✅ · Car Days 10–12</div>
+
+<div class="day-card" id="day-7">
+  <div class="day-header" onclick="toggleDay(7)">
+    <div class="day-check" id="daycheck-7" onclick="toggleDayDone(event,7)"></div>
+    <div class="day-meta">
+      <div class="day-num">Day 7  ·  2 Jun 2026 (Tue)</div>
+      <div class="day-title">Dawn Onsen · Ryokan Breakfast · Return Car Odawara · Shinkansen→Kyoto · Nishiki Market · Pontocho · Kawayuka Dinner</div>
+      <div class="day-weather">⛅ 21°C Hakone → ☀ 23°C Kyoto</div>
+    </div>
+    <div class="day-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+  </div>
+  <div class="day-body">
+    <div class="day-section">
+      <div class="day-section-title"><div class="dot dot-blue"></div>Activities</div>
+      <div class="timeline-wrap"><div class="act-row"><div class="act-time">06:00</div><div class="act-content"><b>Final private onsen — dawn slot.</b> All. Mountain mist for the last time.</div><div class="act-check" onclick="toggleAct(event,'7-1')"></div></div>
+      <div class="act-row"><div class="act-time">08:00</div><div class="act-content"><b>Traditional ryokan breakfast.</b> Shilpa &amp; Ariv: vegetarian. Kranthi: grilled fish — no pork.</div><div class="act-check" onclick="toggleAct(event,'7-2')"></div></div>
+      <div class="act-row"><div class="act-time">09:30</div><div class="act-content"><b>Check out. Drive to Toyota Rent a Car Odawara branch.</b> ~25 min from ryokan. Return car. Bus to Odawara Station (10 min) or taxi (¥900).</div><div class="act-check" onclick="toggleAct(event,'7-3')"></div></div>
+      <div class="act-row"><div class="act-time">10:40</div><div class="act-content"><b>Shinkansen Hikari, Odawara → Kyoto.</b> ~2h 15min. ~¥12,320 pp. Sit right side — Mt Fuji fills the window near Shin-Fuji Station. Arrive Kyoto ~13:00.</div><div class="act-check" onclick="toggleAct(event,'7-4')"></div></div>
+      <div class="act-row"><div class="act-time">13:30</div><div class="act-content"><b>Check in Kyoto hotel. Freshen up.</b> Bags can go to room (hotel will hold if room not ready).</div><div class="act-check" onclick="toggleAct(event,'7-5')"></div></div>
+      <div class="act-row"><div class="act-time">14:00</div><div class="act-content"><b>Nishiki Market, Kyoto.</b> All. Shilpa &amp; Ariv: fresh yuba, tofu, matcha mochi, fresh soy milk. Kranthi: grilled scallops — confirm no pork stalls. The kitchen of Kyoto.</div><div class="act-check" onclick="toggleAct(event,'7-6')"></div></div>
+      <div class="act-row"><div class="act-time">16:00</div><div class="act-content"><b>Gion &amp; Pontocho walk.</b> Lantern-lit lanes, machiya townhouses. Best geiko sighting 17:00–18:30 at Hanamikoji-dori.</div><div class="act-check" onclick="toggleAct(event,'7-7')"></div></div>
+      <div class="act-row"><div class="act-time">19:00</div><div class="act-content"><b>Dinner: Kawayuka riverside deck, Pontocho.</b> All. Summer platform over Kamo River — fireflies visible in June. Shilpa &amp; Ariv: tofu, tempura — specify no dashi. Kranthi: fish — confirm no pork.</div><div class="act-check" onclick="toggleAct(event,'7-8')"></div></div>
+      </div>
+    </div>
+    <div class="day-section">
+      <div class="day-section-title"><div class="dot dot-blue"></div>Maps &amp; Links</div>
+      <div class="link-row">
+        <a href="https://www.klook.com/en-SG/japan-rail/shinkansen/" target="_blank" class="link-btn link-book">🎟 Buy Shinkansen (Klook)</a>
+        <a href="https://rent.toyota.co.jp/en/" target="_blank" class="link-btn link-book">🚗 Toyota Odawara Return</a>
+        <a href="#" onclick="openMaps('35.0095,135.7668','Nishiki Market Kyoto');return false;" class="link-btn link-maps">📍 Nishiki Market</a>
+        <a href="#" onclick="openMaps('35.0039,135.7750','Pontocho Kyoto');return false;" class="link-btn link-maps">📍 Pontocho</a>
+        <a href="https://happycow.net/asia/japan/kyoto/" target="_blank" class="link-btn link-happy">🥗 HappyCow Kyoto</a>
+      </div>
+    </div>
+    <div class="day-section">
+      <div class="day-section-title"><div class="dot dot-teal"></div>Notes</div>
+      <div class="info-row"><div class="info-label">🛏 Stay</div><div class="info-val">Kyoto hotel — Night 1 of 4. Shijo-Karasuma area. 6 min subway to Kyoto Station.</div></div>
+      <div class="info-row"><div class="info-label">🚆 Transit</div><div class="info-val">Odawara → Kyoto: Shinkansen Hikari ~2h 15min, ~¥12,320 pp individual ticket. Buy on Klook before departure.</div></div>
+      <div class="info-row"><div class="info-label">🍜 Food</div><div class="info-val">Nishiki Market snacks for lunch. Dinner: Kawayuka riverside deck with June fireflies.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="day-card" id="day-8">
+  <div class="day-header" onclick="toggleDay(8)">
+    <div class="day-check" id="daycheck-8" onclick="toggleDayDone(event,8)"></div>
+    <div class="day-meta">
+      <div class="day-num">Day 8  ·  3 Jun 2026 (Wed)</div>
+      <div class="day-title">USJ Full Day — Nintendo World · Hogwarts · Hollywood Dream 🎢</div>
+      <div class="day-weather">⛅ 25°C · Wednesday — lightest crowds of the week at USJ</div>
+    </div>
+    <div class="day-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+  </div>
+  <div class="day-body">
+    <div class="day-section">
+      <div class="day-section-title"><div class="dot dot-teal"></div>Getting There</div>
+      <div class="info-row"><div class="info-label">Transport</div><div class="info-val">Kyoto Station → Shin-Osaka (Shinkansen, 15 min, ~¥1,400 pp) → Osaka Station → Universal City (JR Yumesaki Line, 5 min, ¥170 pp).</div></div>
+    </div>
+    <div class="day-section">
+      <div class="day-section-title"><div class="dot dot-purple"></div>Activities</div>
+      <div class="act-row"><div class="act-time">07:30</div><div class="act-content"><b>Leave Kyoto hotel.</b> Kyoto Station → Shin-Osaka (Shinkansen, 15 min, ~¥1,400 pp) → Osaka Station → Universal City (JR Yumesaki Line, 5 min, ¥170 pp). At USJ gates by 08:25.</div><div class="act-check" onclick="toggleAct(event,'8-1')"></div></div>
+      <div class="act-row"><div class="act-time">08:25</div><div class="act-content"><b>Nintendo World Entry Pass.</b> Arrive at Nintendo World entrance 10 min before allocated slot — lose it if late. Power-Up Band (¥3,500) pre-registered in USJ app earns coins by tapping question blocks.</div><div class="act-check" onclick="toggleAct(event,'8-2')"></div></div>
+      <div class="act-row"><div class="act-time">AM</div><div class="act-content"><b>Nintendo World: Mario Kart: Koopa's Challenge + Donkey Kong Country.</b> Ariv's highlight. Express Pass 4 or 7 pre-purchased — recommended even on Wednesday.</div><div class="act-check" onclick="toggleAct(event,'8-3')"></div></div>
+      <div class="act-row"><div class="act-time">Mid-AM</div><div class="act-content"><b>Hogwarts Express + Wizarding World of Harry Potter.</b> Butterbeer is vegetarian (pumpkin cream).</div><div class="act-check" onclick="toggleAct(event,'8-4')"></div></div>
+      <div class="act-row"><div class="act-time">12:30</div><div class="act-content"><b>Lunch: Three Broomsticks, Harry Potter zone.</b> All. Shilpa &amp; Ariv: vegetarian platter — confirm on arrival. Butterbeer. Kranthi: full menu — check for pork.</div><div class="act-check" onclick="toggleAct(event,'8-5')"></div></div>
+      <div class="act-row"><div class="act-time">PM</div><div class="act-content"><b>Hollywood Dream · Minion Park · Jurassic World.</b> No hotel change — return to Kyoto tonight.</div><div class="act-check" onclick="toggleAct(event,'8-6')"></div></div>
+      <div class="act-row"><div class="act-time">19:00</div><div class="act-content"><b>Leave USJ, return to Kyoto.</b> JR Yumesaki Line → Osaka → Shin-Osaka → Kyoto. Back at hotel by 20:00–20:30. Light dinner or convenience store.</div><div class="act-check" onclick="toggleAct(event,'8-7')"></div></div>
+      </div>
+    </div>
+</div>
+
+<div class="day-card" id="day-9">
+  <div class="day-header" onclick="toggleDay(9)">
+    <div class="day-check" id="daycheck-9" onclick="toggleDayDone(event,9)"></div>
+    <div class="day-meta">
+      <div class="day-num">Day 9  ·  4 Jun 2026 (Thu)</div>
+      <div class="day-title">Kiyomizu-dera · Kimono · Gion Tofu Kaiseki Lunch · Nijo Castle (Kranthi+Ariv) · Botanical Garden (Shilpa) · Philosopher's Path</div>
+      <div class="day-weather">🌧 22°C · Tsuyu — umbrellas essential</div>
+    </div>
+    <div class="day-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+  </div>
+  <div class="day-body">
+    <div class="day-section">
+      <div class="day-section-title"><div class="dot dot-purple"></div>Activities</div>
+      <div class="act-row"><div class="act-time">07:30</div><div class="act-content"><b>Kiyomizu-dera at opening.</b> All. UNESCO shrine on a cliff. Rain improves the atmosphere.</div><div class="act-check" onclick="toggleAct(event,'9-1')"></div></div>
+      <div class="act-row"><div class="act-time">09:30</div><div class="act-content"><b>Kimono rental, Higashiyama.</b> All. ¥3,000–5,000 pp. Ask for <b>zori</b> (flat sandals) not geta. Shops provide wagasa umbrellas for rain.</div><div class="act-check" onclick="toggleAct(event,'9-2')"></div></div>
+      <div class="act-row"><div class="act-time">12:30</div><div class="act-content"><b>Lunch: Gion tofu kaiseki.</b> Shilpa &amp; Ariv: fully vegetarian tofu course. Kranthi: grilled fish — no pork. Return kimono before or after.</div><div class="act-check" onclick="toggleAct(event,'9-lunch')"></div></div>
+      <div class="act-row"><div class="act-time">14:30</div><div class="act-content"><b>Nijo Castle.</b> Kranthi + Ariv. Nightingale floors, painted screens, rock gardens.</div><div class="act-check" onclick="toggleAct(event,'9-3')"></div></div>
+      <div class="act-row"><div class="act-time">14:30</div><div class="act-content"><b>Kyoto Botanical Garden.</b> Shilpa. ¥200 — June roses in bloom.</div><div class="act-check" onclick="toggleAct(event,'9-4')"></div></div>
+      <div class="act-row"><div class="act-time">17:00</div><div class="act-content"><b>Philosopher's Path.</b> All. 2km canal-side stone path. Walk slowly.</div><div class="act-check" onclick="toggleAct(event,'9-5')"></div></div>
+      </div>
+    </div>
+</div>
+
+<div class="day-card" id="day-10">
+  <div class="day-header" onclick="toggleDay(10)">
+    <div class="day-check" id="daycheck-10" onclick="toggleDayDone(event,10)"></div>
+    <div class="day-meta">
+      <div class="day-num">Day 10  ·  5 Jun 2026 (Fri)</div>
+      <div class="day-title">Fushimi Inari 06:15 · Pick up Car · Arashiyama · Bamboo · Shigetsu Lunch · Torokko Train · Miyama Village · Ohara Sanzen-in</div>
+      <div class="day-weather">☀ 24°C · Car pickup from Kyoto Station 09:30</div>
+    </div>
+    <div class="day-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+  </div>
+  <div class="day-body">
+    <div class="day-section">
+      <div class="day-section-title"><div class="dot dot-blue"></div>Activities</div>
+      <div class="timeline-wrap"><div class="act-row"><div class="act-time">06:15</div><div class="act-content"><b>Fushimi Inari — first JR train from Kyoto Station.</b> All. 10,000 vermillion torii gates before 08:00. Near silence. Hike to mid-plateau (45 min) for panoramic views. Non-negotiable — arrive before crowds. Friday dawn is quiet.</div><div class="act-check" onclick="toggleAct(event,'10-1')"></div></div>
+      <div class="act-row"><div class="act-time">08:30</div><div class="act-content"><b>Return to Kyoto Station by JR.</b> 5 min, ¥150 pp. Pick up Toyota Rent a Car from Kyoto Station branch 09:30.</div><div class="act-check" onclick="toggleAct(event,'10-2')"></div></div>
+      <div class="act-row"><div class="act-time">09:30</div><div class="act-content"><b>Drive to Arashiyama.</b> 20 min by car. Park at Tenryu-ji car park (¥500 flat rate). Far easier than the bus on a Friday morning.</div><div class="act-check" onclick="toggleAct(event,'10-3')"></div></div>
+      <div class="act-row"><div class="act-time">10:00</div><div class="act-content"><b>Arashiyama Bamboo Grove.</b> All. 20m stalks, light filtering through — best before 10:30 before tour groups arrive.</div><div class="act-check" onclick="toggleAct(event,'10-4')"></div></div>
+      <div class="act-row"><div class="act-time">10:30</div><div class="act-content"><b>Tenryu-ji Temple garden (UNESCO).</b> All. Garden borrows the Arashiyama mountains as backdrop. Koi pond, raked gravel.</div><div class="act-check" onclick="toggleAct(event,'10-5')"></div></div>
+      <div class="act-row"><div class="act-time">12:00</div><div class="act-content"><b>Lunch: Shigetsu at Tenryu-ji.</b> All. Shojin ryori — Buddhist vegetarian cuisine in tatami room with garden view. ¥4,000–5,000 pp. Pre-booked. Best vegetarian meal of the trip. Kranthi: entirely suitable — no pork or beef.</div><div class="act-check" onclick="toggleAct(event,'10-6')"></div></div>
+      <div class="act-row"><div class="act-time">14:00</div><div class="act-content"><b>Torokko Romantic Train.</b> All. Open wooden cars through mountain gorge. Pre-booked (sagano-kanko.co.jp). Gorge-side window for Ariv. Drive car to Kameoka Station end to collect train.</div><div class="act-check" onclick="toggleAct(event,'10-7')"></div></div>
+      <div class="act-row"><div class="act-time">15:30</div><div class="act-content"><b>Drive north to Miyama Kayabuki-no-Sato.</b> 45 min from Arashiyama. A hamlet of 38 perfectly preserved thatched-roof farmhouses in a mountain valley — completely inaccessible by public transport. June is deep green and atmospheric. Shilpa's landscape highlight of the Kyoto leg. Allow 60 min.</div><div class="act-check" onclick="toggleAct(event,'10-8')"></div></div>
+      <div class="act-row"><div class="act-time">17:00</div><div class="act-content"><b>Drive east to Ohara — Sanzen-in Temple.</b> 40 min from Miyama. Mountain village, moss gardens, June hydrangeas. Sanzen-in (¥700) has one of the most beautiful moss gardens in Japan. Allow 60 min.</div><div class="act-check" onclick="toggleAct(event,'10-9')"></div></div>
+      <div class="act-row"><div class="act-time">18:30</div><div class="act-content"><b>Drive back to Kyoto hotel.</b> 45 min. Park car at hotel (confirm hotel parking at check-in).</div><div class="act-check" onclick="toggleAct(event,'10-10')"></div></div>
+      <div class="act-row"><div class="act-time">19:30</div><div class="act-content"><b>Dinner: Kawaramachi izakaya.</b> Shilpa &amp; Ariv: agedashi tofu, edamame, vegetable gyoza. Kranthi: fish/chicken — confirm no pork or beef.</div><div class="act-check" onclick="toggleAct(event,'10-11')"></div></div>
+      </div>
+    </div>
+    <div class="day-section">
+      <div class="day-section-title"><div class="dot dot-blue"></div>Maps &amp; Links</div>
+      <div class="link-row">
+        <a href="https://sagano-kanko.co.jp/en/" target="_blank" class="link-btn link-book">🚂 Book Torokko Train</a>
+        <a href="https://www.tenryuji.com/en/shokuji/" target="_blank" class="link-btn link-book">🍱 Book Shigetsu</a>
+        <a href="#" onclick="openMaps('34.9671,135.7727','Fushimi Inari Taisha Kyoto');return false;" class="link-btn link-maps">📍 Fushimi Inari</a>
+        <a href="#" onclick="openMaps('35.0095,135.6718','Arashiyama Bamboo Grove');return false;" class="link-btn link-maps">📍 Bamboo Grove</a>
+        <a href="#" onclick="openMaps('35.2330,135.6721','Miyama Kayabuki-no-Sato');return false;" class="link-btn link-maps">📍 Miyama Village</a>
+        <a href="#" onclick="openMaps('35.1170,135.8000','Sanzen-in Temple Ohara Kyoto');return false;" class="link-btn link-maps">📍 Ohara Sanzen-in</a>
+      </div>
+    </div>
+    <div class="day-section">
+      <div class="day-section-title"><div class="dot dot-teal"></div>Notes</div>
+      <div class="info-row"><div class="info-label">🚗 Car</div><div class="info-val">Pick up Toyota Rent a Car at Kyoto Station branch 09:30. Keep through Day 12. Miyama and Ohara are completely inaccessible by public transport.</div></div>
+      <div class="info-row"><div class="info-label">🚆 Fushimi</div><div class="info-val">Take JR to Fushimi Inari and back to Kyoto Station first — then pick up car. JR Nara Line: Kyoto Station → Inari, 5 min, ¥150 pp.</div></div>
+      <div class="info-row"><div class="info-label">🍜 Food</div><div class="info-val">Lunch: Shigetsu at Tenryu-ji (pre-booked). Dinner: Kawaramachi izakaya.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="day-card" id="day-11">
+  <div class="day-header" onclick="toggleDay(11)">
+    <div class="day-check" id="daycheck-11" onclick="toggleDayDone(event,11)"></div>
+    <div class="day-meta">
+      <div class="day-num">Day 11  ·  6 Jun 2026 (Sat)</div>
+      <div class="day-title">Railway Museum (Ariv) · Nishiki Market · Car: Imperial Palace → Daitoku-ji → Hanamikoji-dori · Farewell Kyoto Dinner · Send Bags</div>
+      <div class="day-weather">🌧 23°C · Tsuyu · Last Kyoto day</div>
+    </div>
+    <div class="day-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+  </div>
+  <div class="day-body">
+    <div class="day-section">
+      <div class="day-section-title"><div class="dot dot-blue"></div>Activities</div>
+      <div class="timeline-wrap"><div class="act-row"><div class="act-time">10:00</div><div class="act-content"><b>Kyoto Railway Museum.</b> Ariv ⭐. ¥1,500 — 53 real trains including original Shinkansen. Driving simulators. 2-min walk from Kyoto Station. Kranthi &amp; Shilpa: Toji Temple pagoda grounds nearby (free, 5-min walk).</div><div class="act-check" onclick="toggleAct(event,'11-1')"></div></div>
+      <div class="act-row"><div class="act-time">12:00</div><div class="act-content"><b>Nishiki Market lunch.</b> All. Shilpa &amp; Ariv: tofu cup, warabi mochi, tamagoyaki. Kranthi: grilled scallops — confirm no pork stalls.</div><div class="act-check" onclick="toggleAct(event,'11-2')"></div></div>
+      <div class="act-row"><div class="act-time">13:30</div><div class="act-content"><b>Pick up car from hotel parking.</b> Drive to Imperial Palace — 15 min.</div><div class="act-check" onclick="toggleAct(event,'11-3')"></div></div>
+      <div class="act-row"><div class="act-time">14:00</div><div class="act-content"><b>Kyoto Imperial Palace &amp; Gyoen Park.</b> All. Free. Former imperial residence grounds. Allow 75 min. Park at Kyoto Gyoen underground car park (¥260/30 min).</div><div class="act-check" onclick="toggleAct(event,'11-4')"></div></div>
+      <div class="act-row"><div class="act-time">15:30</div><div class="act-content"><b>Drive to Daitoku-ji Temple complex.</b> 10 min. Park at Daitoku-ji car park (small, ¥300 flat). Seven sub-temples, most free. Sand and moss gardens. Almost no tourists even on Saturday. Most hidden and atmospheric temple in Kyoto. Allow 75 min.</div><div class="act-check" onclick="toggleAct(event,'11-5')"></div></div>
+      <div class="act-row"><div class="act-time">17:15</div><div class="act-content"><b>Drive to Gion.</b> 20 min. Park at Gion area car park (¥400/30 min — just 60–90 min needed).</div><div class="act-check" onclick="toggleAct(event,'11-6')"></div></div>
+      <div class="act-row"><div class="act-time">18:00</div><div class="act-content"><b>Hanamikoji-dori, Gion.</b> All. Stand quietly at the corner — best chance of spotting geiko heading to engagements. Saturday evening: higher sighting chance. No flash, no blocking.</div><div class="act-check" onclick="toggleAct(event,'11-7')"></div></div>
+      <div class="act-row"><div class="act-time">19:30</div><div class="act-content"><b>Farewell Kyoto dinner: Gion Kappa shabu-shabu.</b> Kranthi: seafood/chicken — no pork/beef. Shilpa &amp; Ariv: vegetable shabu-shabu — confirm kombu-only broth. Tatami seating in converted machiya.</div><div class="act-check" onclick="toggleAct(event,'11-8')"></div></div>
+      <div class="act-row"><div class="act-time">After dinner</div><div class="act-content"><b>Return car to hotel parking. Send bags to NRT hotel via takuhaibin</b> from hotel desk (¥2,500/bag). Bags arrive NRT hotel Day 13 night. Travel with hand luggage only from tomorrow.</div><div class="act-check" onclick="toggleAct(event,'11-9')"></div></div>
+      </div>
+    </div>
+    <div class="day-section">
+      <div class="day-section-title"><div class="dot dot-blue"></div>Maps &amp; Links</div>
+      <div class="link-row">
+        <a href="#" onclick="openMaps('34.9858,135.7588','Kyoto Railway Museum');return false;" class="link-btn link-maps">📍 Railway Museum</a>
+        <a href="#" onclick="openMaps('35.0252,135.7621','Kyoto Imperial Palace');return false;" class="link-btn link-maps">📍 Imperial Palace</a>
+        <a href="#" onclick="openMaps('35.0390,135.7467','Daitoku-ji Temple Kyoto');return false;" class="link-btn link-maps">📍 Daitoku-ji</a>
+        <a href="#" onclick="openMaps('35.0024,135.7784','Hanamikoji-dori Gion Kyoto');return false;" class="link-btn link-maps">📍 Hanamikoji-dori</a>
+      </div>
+    </div>
+    <div class="day-section">
+      <div class="day-section-title"><div class="dot dot-teal"></div>Notes</div>
+      <div class="info-row"><div class="info-label">🛏 Stay</div><div class="info-val">Same Kyoto hotel — final night. Check out tomorrow morning 08:00.</div></div>
+      <div class="info-row"><div class="info-label">🚗 Car</div><div class="info-val">Leave car at hotel morning. Pick up 13:30 for afternoon palace/temple/Gion circuit — saves 3 taxi rides (¥4,500). Return car to hotel after dinner. Keep car overnight for Lake Biwa tomorrow.</div></div>
+      <div class="info-row"><div class="info-label">📦 Bags</div><div class="info-val">Send bags to NRT hotel via takuhaibin tonight. ¥2,500/bag from hotel desk. Bags arrive NRT hotel on Day 13.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="phase-banner phase-osaka">🎡 Phase 4 — Osaka · Day 12 · 7 Jun 2026 · 1 night · Via Lake Biwa + Hikone</div>
+
+<div class="day-card" id="day-12">
+  <div class="day-header" onclick="toggleDay(12)">
+    <div class="day-check" id="daycheck-12" onclick="toggleDayDone(event,12)"></div>
+    <div class="day-meta">
+      <div class="day-num">Day 12  ·  7 Jun 2026 (Sun)</div>
+      <div class="day-title">Car: Lake Biwa Western Shore · Hikone Castle · Return Car Kyoto · Check out · Shinkansen→Osaka · Osaka Castle · Dotonbori Evening</div>
+      <div class="day-weather">🌧 22°C · Sunday · Car final day</div>
+    </div>
+    <div class="day-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+  </div>
+  <div class="day-body">
+    <div class="day-section">
+      <div class="day-section-title"><div class="dot dot-blue"></div>Activities</div>
+      <div class="timeline-wrap"><div class="act-row"><div class="act-time">08:00</div><div class="act-content"><b>Check out Kyoto hotel.</b> Hand luggage only — bags already sent to NRT hotel last night. Load hand luggage in car.</div><div class="act-check" onclick="toggleAct(event,'12-1')"></div></div>
+      <div class="act-row"><div class="act-time">08:30</div><div class="act-content"><b>Drive to Lake Biwa western shore.</b> 40 min from Kyoto. Japan's largest lake. Western shore is the scenic side — rolling hills, clear water, quiet on Sunday morning.</div><div class="act-check" onclick="toggleAct(event,'12-2')"></div></div>
+      <div class="act-row"><div class="act-time">09:30</div><div class="act-content"><b>Biwako Terrace cable car.</b> All. Gondola up Mt Bishamon (1,108m). Panoramic views of Lake Biwa and the surrounding mountains. ¥2,800 pp return. Shilpa's landscape highlight of the trip.</div><div class="act-check" onclick="toggleAct(event,'12-3')"></div></div>
+      <div class="act-row"><div class="act-time">11:00</div><div class="act-content"><b>Drive north along Lake Biwa western shore to Hikone.</b> 50 min. Scenic lakeside route.</div><div class="act-check" onclick="toggleAct(event,'12-4')"></div></div>
+      <div class="act-row"><div class="act-time">12:00</div><div class="act-content"><b>Lunch near Hikone.</b> Shilpa &amp; Ariv: Omi tofu sets or vegetable tempura — ask for no dashi. Kranthi: Omi beef (local specialty — beef, so fine) or freshwater fish from the lake.</div><div class="act-check" onclick="toggleAct(event,'12-5')"></div></div>
+      <div class="act-row"><div class="act-time">13:00</div><div class="act-content"><b>Hikone Castle.</b> All. One of only 12 original surviving feudal castles in Japan — UNESCO tentative list. Much less crowded than Himeji but equally authentic. ¥800 pp. Castle town with preserved samurai district below. Allow 90 min.</div><div class="act-check" onclick="toggleAct(event,'12-6')"></div></div>
+      <div class="act-row"><div class="act-time">14:30</div><div class="act-content"><b>Drive back to Kyoto Station Toyota Rent a Car.</b> 50 min. Return car.</div><div class="act-check" onclick="toggleAct(event,'12-7')"></div></div>
+      <div class="act-row"><div class="act-time">15:45</div><div class="act-content"><b>Shinkansen Kyoto → Shin-Osaka.</b> 15 min, ~¥1,490 pp. Check into Osaka hotel. Hand luggage only.</div><div class="act-check" onclick="toggleAct(event,'12-8')"></div></div>
+      <div class="act-row"><div class="act-time">17:00</div><div class="act-content"><b>Osaka Castle — grounds and interior.</b> All. ¥600 pp interior. Excellent Toyotomi Hideyoshi exhibition (Kranthi). Stone walls and moat staggering in scale. Allow 75 min — no time pressure tonight.</div><div class="act-check" onclick="toggleAct(event,'12-9')"></div></div>
+      <div class="act-row"><div class="act-time">19:30</div><div class="act-content"><b>Dotonbori walk + street food dinner.</b> Canal, Glico man sign, giant neon crab. Kranthi: takoyaki at Aizuya (octopus — no pork). Shilpa &amp; Ariv: vegetable kushikatsu (egg batter fine), matcha crepes. Eat standing up.</div><div class="act-check" onclick="toggleAct(event,'12-10')"></div></div>
+      </div>
+    </div>
+    <div class="day-section">
+      <div class="day-section-title"><div class="dot dot-blue"></div>Maps &amp; Links</div>
+      <div class="link-row">
+        <a href="#" onclick="openMaps('35.2167,135.9500','Biwako Terrace Shiga Japan');return false;" class="link-btn link-maps">📍 Biwako Terrace</a>
+        <a href="#" onclick="openMaps('35.2763,136.2539','Hikone Castle Shiga Japan');return false;" class="link-btn link-maps">📍 Hikone Castle</a>
+        <a href="#" onclick="openMaps('34.6879,135.5259','Osaka Castle');return false;" class="link-btn link-maps">📍 Osaka Castle</a>
+        <a href="#" onclick="openMaps('34.6687,135.5014','Dotonbori Osaka');return false;" class="link-btn link-maps">📍 Dotonbori</a>
+        <a href="https://happycow.net/asia/japan/osaka/" target="_blank" class="link-btn link-happy">🥗 HappyCow Osaka</a>
+      </div>
+    </div>
+    <div class="day-section">
+      <div class="day-section-title"><div class="dot dot-teal"></div>Notes</div>
+      <div class="info-row"><div class="info-label">🛏 Stay</div><div class="info-val">Osaka — Namba/Shinsaibashi area. 1 night. Dotonbori walkable. Kintetsu to Nara next morning.</div></div>
+      <div class="info-row"><div class="info-label">🚗 Car</div><div class="info-val">Return car at Toyota Kyoto Station branch by 15:30. Car Days 10–12 total: 3 days ~¥24,000 + parking ~¥4,000 = ~¥28,000 (~S$260).</div></div>
+      <div class="info-row"><div class="info-label">🍜 Food</div><div class="info-val">Lunch: Hikone area. Dinner: Dotonbori street food.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="phase-banner phase-transit">🗼 Phase 5 — NRT + Tokyo · Days 13–14 · 8–9 Jun 2026 · 2 nights NRT hotel</div>
+
+<div class="day-card" id="day-13">
+  <div class="day-header" onclick="toggleDay(13)">
+    <div class="day-check" id="daycheck-13" onclick="toggleDayDone(event,13)"></div>
+    <div class="day-meta">
+      <div class="day-num">Day 13  ·  8 Jun 2026 (Mon)</div>
+      <div class="day-title">Check out Osaka · Nara Day Trip · Farewell Dotonbori Meal · KIX→NRT Flight</div>
+      <div class="day-weather">⛅ 24°C · Clearing — Monday quieter in Nara</div>
+    </div>
+    <div class="day-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+  </div>
+  <div class="day-body">
+    <div class="day-section">
+      <div class="day-section-title"><div class="dot dot-amber"></div>Getting There</div>
+      <div class="info-row"><div class="info-label">To Nara</div><div class="info-val">Kintetsu Express, Osaka Namba → Nara, 40 min, ¥760 pp. Pay with Suica.</div></div>
+    </div>
+    <div class="day-section">
+      <div class="day-section-title"><div class="dot dot-amber"></div>Activities</div>
+      
+      <div class="act-row"><div class="act-time">08:00</div><div class="act-content"><b>Check out Osaka hotel.</b> Hand luggage only — bags already at NRT hotel.</div><div class="act-check" onclick="toggleAct(event,'13-1')"></div></div>
+      <div class="act-row"><div class="act-time">08:30</div><div class="act-content"><b>Kintetsu Express, Osaka Namba → Nara.</b> 40 min, ¥760 pp. Pay with Suica or cash at Kintetsu-Namba Station.</div><div class="act-check" onclick="toggleAct(event,'13-2')"></div></div>
+      <div class="act-row"><div class="act-time">09:15</div><div class="act-content"><b>Nara Deer Park.</b> All. Buy shika senbei immediately. 1,200 free-roaming sacred deer — they bow for crackers! Monday = quieter than weekend.</div><div class="act-check" onclick="toggleAct(event,'13-3')"></div></div>
+      <div class="act-row"><div class="act-time">11:00</div><div class="act-content"><b>Todai-ji Temple.</b> All. World's largest wooden building. 15m bronze Buddha. Wooden pillar — Ariv attempts to fit through.</div><div class="act-check" onclick="toggleAct(event,'13-4')"></div></div>
+      <div class="act-row"><div class="act-time">12:00</div><div class="act-content"><b>Lunch: Nakatanidou mochi.</b> All. Watch high-speed pounding. Fresh warm mochi — entirely vegetarian.</div><div class="act-check" onclick="toggleAct(event,'13-5')"></div></div>
+      <div class="act-row"><div class="act-time">13:00</div><div class="act-content"><b>Kasuga Taisha Shrine.</b> All. 3,000 lanterns in ancient cedar forest paths.</div><div class="act-check" onclick="toggleAct(event,'13-6')"></div></div>
+      <div class="act-row"><div class="act-time">13:45</div><div class="act-content"><b>Yoshikien Garden — FREE for non-Japanese.</b> All. Moss, pond, tea gardens. June hydrangeas. 45 min.</div><div class="act-check" onclick="toggleAct(event,'13-7')"></div></div>
+      <div class="act-row"><div class="act-time">14:30</div><div class="act-content"><b>Kintetsu Express, Nara → Osaka Namba.</b> 40 min, ¥760 pp.</div><div class="act-check" onclick="toggleAct(event,'13-8')"></div></div>
+      <div class="act-row"><div class="act-time">15:30</div><div class="act-content"><b>Farewell meal: Chibo Restaurant, Dotonbori.</b> All. Shilpa &amp; Ariv: vegetarian okonomiyaki — call ahead to confirm. Kranthi: seafood — confirm no pork. Finish by 17:00.</div><div class="act-check" onclick="toggleAct(event,'13-9')"></div></div>
+      <div class="act-row"><div class="act-time">17:30</div><div class="act-content"><b>Nankai Rapi:t, Namba → KIX Airport.</b> 38 min, ¥1,430 pp. Every 30 min.</div><div class="act-check" onclick="toggleAct(event,'13-10')"></div></div>
+      <div class="act-row"><div class="act-time">18:10</div><div class="act-content"><b>Arrive KIX. Check in for Peach or Jetstar evening flight</b> (target 20:00–20:30 departure). Hand luggage only — bags at NRT hotel.</div><div class="act-check" onclick="toggleAct(event,'13-11')"></div></div>
+      <div class="act-row"><div class="act-time">~21:45</div><div class="act-content"><b>Land NRT Terminal 1.</b> Short walk to Narita Airport Hotel. Check in ~22:00. Bags from Kyoto already waiting. 2 nights here (8 and 9 Jun).</div><div class="act-check" onclick="toggleAct(event,'13-12')"></div></div>
+    </div>
+    <div class="day-section">
+      <div class="day-section-title"><div class="dot dot-blue"></div>Links</div>
+      <div class="link-row">
+        <a href="https://www.usj.co.jp/web/en/us" target="_blank" class="link-btn link-book">🎢 USJ Site</a>
+        <a href="#" onclick="openMaps('34.6654,135.4323','Universal Studios Japan, Osaka');return false;" class="link-btn link-maps">📍 USJ</a>
+        <a href="#" onclick="navTo('34.6654,135.4323','Universal Studios Japan');return false;" class="link-btn link-nav">🧭 Navigate</a>
+        <a href="#" onclick="openMaps('34.6687,135.5014','Chibo Restaurant Dotonbori Osaka');return false;" class="link-btn link-maps">📍 Chibo Restaurant</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="day-card" id="day-14">
+  <div class="day-header" onclick="toggleDay(14)">
+    <div class="day-check" id="daycheck-14" onclick="toggleDayDone(event,14)"></div>
+    <div class="day-meta">
+      <div class="day-num">Day 14  ·  9 Jun 2026 (Tue)</div>
+      <div class="day-title">Wake at NRT · Narita Express → Tokyo · Grand Seiko Ginza · Isetan · Nakano Broadway (watches) · Akihabara · Tokyo Station Omiyage</div>
+      <div class="day-weather">⛅ 24°C · Tokyo</div>
+    </div>
+    <div class="day-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+  </div>
+  <div class="day-body">
+    <div class="day-section">
+      <div class="day-section-title"><div class="dot dot-blue"></div>Activities</div>
+      <div class="timeline-wrap"><div class="act-row"><div class="act-time">07:30</div><div class="act-content"><b>Wake up at NRT hotel.</b> Breakfast at hotel. Bags arrived from Kyoto. No luggage to manage today.</div><div class="act-check" onclick="toggleAct(event,'14-1')"></div></div>
+      <div class="act-row"><div class="act-time">08:30</div><div class="act-content"><b>Narita Express, NRT Terminal 1 → Tokyo Station.</b> 53 min, ¥3,070 pp individual ticket. Arrive Tokyo ~09:25.</div><div class="act-check" onclick="toggleAct(event,'14-2')"></div></div>
+      <div class="act-row"><div class="act-time">09:30</div><div class="act-content"><b>Ginza — watches.</b> Grand Seiko Boutique Ginza (Spring Drive demonstration). Seiko Museum Ginza — free, 5-min walk. Tax-free on passport over ¥5,000.</div><div class="act-check" onclick="toggleAct(event,'14-3')"></div></div>
+      <div class="act-row"><div class="act-time">11:30</div><div class="act-content"><b>Isetan Shinjuku Men's Building.</b> Grand Seiko, Credor (Japan-only), Rolex, IWC. Main building: Japanese cosmetics (SK-II, Shiseido — cheaper than Singapore). Tax-free.</div><div class="act-check" onclick="toggleAct(event,'14-4')"></div></div>
+      <div class="act-row"><div class="act-time">13:00</div><div class="act-content"><b>Lunch: Department store food floor or conveyor belt sushi near Shinjuku.</b></div><div class="act-check" onclick="toggleAct(event,'14-5')"></div></div>
+      <div class="act-row"><div class="act-time">13:30</div><div class="act-content"><b>Nakano Broadway — 3rd floor watch shops.</b> 10 min from Shinjuku on JR Chuo Line → Nakano Station north exit → Sun Mall arcade → Broadway. Best stops: <b>Kamekichi</b> (fairest prices, English-speaking staff, Grand Seiko/Rolex/IWC), <b>Firekids</b> (vintage Japanese — Grand Seiko, Seiko, Citizen), <b>Jackroad</b> (luxury pre-owned). Pre-owned and vintage — lower prices than Ginza retail, rare discontinued models. Tax-free over ¥5,000. Allow 90 min.</div><div class="act-check" onclick="toggleAct(event,'14-nakano')"></div></div>
+      <div class="act-row"><div class="act-time">16:00</div><div class="act-content"><b>Matsumoto Kiyoshi, Shinjuku.</b> Japanese sunscreen, skincare, sheet masks. Tax-free over ¥5,000.</div><div class="act-check" onclick="toggleAct(event,'14-6')"></div></div>
+      <div class="act-row"><div class="act-time">17:00</div><div class="act-content"><b>Akihabara — Ariv leads.</b> Yodobashi Camera: electronics, gaming, anime merchandise. Tax-free. Allow 2 hours.</div><div class="act-check" onclick="toggleAct(event,'14-7')"></div></div>
+      <div class="act-row"><div class="act-time">19:30</div><div class="act-content"><b>Tokyo Station B1F omiyage floor — do this last.</b> Allow 1 hour. Kit Kats 20+ flavours, Tokyo Banana, Shiroi Koibito, regional wagashi. Everything packs flat.</div><div class="act-check" onclick="toggleAct(event,'14-8')"></div></div>
+      <div class="act-row"><div class="act-time">20:30</div><div class="act-content"><b>Narita Express, Tokyo Station → NRT Terminal 1.</b> 53 min, ¥3,070 pp. Arrive NRT ~21:23.</div><div class="act-check" onclick="toggleAct(event,'14-9')"></div></div>
+      <div class="act-row"><div class="act-time">21:30</div><div class="act-content"><b>Back at NRT hotel.</b> Pack final bags. Sleep. 2-min walk to Scoot check-in tomorrow morning.</div><div class="act-check" onclick="toggleAct(event,'14-10')"></div></div>
+      </div>
+    </div>
+    <div class="day-section">
+      <div class="day-section-title"><div class="dot dot-blue"></div>Maps &amp; Links</div>
+      <div class="link-row">
+        <a href="#" onclick="openMaps('35.6712,139.7649','Grand Seiko Boutique Ginza');return false;" class="link-btn link-maps">📍 Grand Seiko Ginza</a>
+        <a href="#" onclick="openMaps('35.6914,139.7002','Isetan Shinjuku');return false;" class="link-btn link-maps">📍 Isetan Shinjuku</a>
+        <a href="#" onclick="openMaps('35.7080,139.6656','Nakano Broadway');return false;" class="link-btn link-maps">📍 Nakano Broadway</a>
+        <a href="#" onclick="openMaps('35.6995,139.7744','Yodobashi Camera Akihabara');return false;" class="link-btn link-maps">📍 Akihabara</a>
+        <a href="#" onclick="openMaps('35.6812,139.7671','Tokyo Station B1F Omiyage');return false;" class="link-btn link-maps">📍 Tokyo Station Omiyage</a>
+        <a href="https://www.ecbo.jp/cloak/en" target="_blank" class="link-btn link-web">🧳 ecbo cloak</a>
+      </div>
+    </div>
+    <div class="day-section">
+      <div class="day-section-title"><div class="dot dot-teal"></div>Sleeping Tonight</div>
+      <div class="info-row"><div class="info-label">Hotel</div><div class="info-val">Same NRT hotel — Night 2 of 2. 2-min walk to Scoot check-in tomorrow morning.</div></div>
+      <div class="info-row"><div class="info-label">Transport</div><div class="info-val">Narita Express NRT↔Tokyo: ¥3,070 pp each way. Individual tickets — buy at station or Klook.</div></div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<!-- ═══════════ PAGE: HIGHLIGHTS ═══════════ -->
+<div id="page-son" class="page">
+
+  <div class="section-title">Ariv's Highlights ⭐</div>
+  <p style="font-size:13px;color:var(--text2);margin-bottom:16px;">Tick these off as you do them!</p>
+
+  <div class="highlight-card">
+    <div class="highlight-icon">🎢</div>
+    <div class="highlight-meta">
+      <div class="highlight-name">DisneySea</div>
+      <div class="highlight-day">Day 3 · 29 May · Urayasu, Tokyo</div>
+      <div class="highlight-desc">The only DisneySea in the world. Journey to the Center of the Earth, Indiana Jones, Tower of Terror. Fantasmic! show at night.</div>
+    </div>
+    <div class="highlight-check" id="hl-1" onclick="toggleHL(1)"></div>
+  </div>
+
+  <div class="highlight-card">
+    <div class="highlight-icon">👾</div>
+    <div class="highlight-meta">
+      <div class="highlight-name">Akihabara</div>
+      <div class="highlight-day">Day 2 · 28 May · Tokyo</div>
+      <div class="highlight-desc">Multi-floor anime stores, Taito Station arcade, crane machines, rhythm games, retro gaming floors. 2 full hours, you lead.</div>
+    </div>
+    <div class="highlight-check" id="hl-2" onclick="toggleHL(2)"></div>
+  </div>
+
+  <div class="highlight-card">
+    <div class="highlight-icon">🌋</div>
+    <div class="highlight-meta">
+      <div class="highlight-name">Hakone Ropeway over Owakudani</div>
+      <div class="highlight-day">Day 5 · 31 May · Hakone</div>
+      <div class="highlight-desc">Active volcanic crater below — sulfur steam vents, black eggs boiled in volcanic springs. Mt Fuji might appear from the cable car!</div>
+    </div>
+    <div class="highlight-check" id="hl-3" onclick="toggleHL(3)"></div>
+  </div>
+
+  <div class="highlight-card">
+    <div class="highlight-icon">🛁</div>
+    <div class="highlight-meta">
+      <div class="highlight-name">Ryokan Onsen — Private Family Bath</div>
+      <div class="highlight-day">Days 5–6 · 31 May–1 Jun · Hakone</div>
+      <div class="highlight-desc">Sleep on futon beds in a traditional Japanese inn. Private outdoor hot spring bath with mountain forest views at dawn.</div>
+    </div>
+    <div class="highlight-check" id="hl-4" onclick="toggleHL(4)"></div>
+  </div>
+
+  <div class="highlight-card">
+    <div class="highlight-icon">🦌</div>
+    <div class="highlight-meta">
+      <div class="highlight-name">Nara Deer Park</div>
+      <div class="highlight-day">Day 8 · 3 Jun · Nara</div>
+      <div class="highlight-desc">1,200 wild sacred deer roam free. Buy shika senbei (deer crackers) and get completely surrounded. The deer actually bow for crackers!</div>
+    </div>
+    <div class="highlight-check" id="hl-5" onclick="toggleHL(5)"></div>
+  </div>
+
+  <div class="highlight-card">
+    <div class="highlight-icon">🏯</div>
+    <div class="highlight-meta">
+      <div class="highlight-name">Hikone Castle</div>
+      <div class="highlight-day">Day 12 · 7 Jun · Lake Biwa & Hikone</div>
+      <div class="highlight-desc">Every anime and samurai castle is based on this one. The White Egret Castle. Six storeys of perfect tiered architecture.</div>
+    </div>
+    <div class="highlight-check" id="hl-6" onclick="toggleHL(6)"></div>
+  </div>
+
+  <div class="highlight-card">
+    <div class="highlight-icon">🚂</div>
+    <div class="highlight-meta">
+      <div class="highlight-name">Torokko Romantic Train</div>
+      <div class="highlight-day">Day 7 · 2 Jun · Arashiyama, Kyoto</div>
+      <div class="highlight-desc">Open wooden railway cars through a mountain gorge. River rushing below. Gorge-side window seat is yours.</div>
+    </div>
+    <div class="highlight-check" id="hl-7" onclick="toggleHL(7)"></div>
+  </div>
+
+  <div class="highlight-card">
+    <div class="highlight-icon">🍄</div>
+    <div class="highlight-meta">
+      <div class="highlight-name">Universal Studios Japan — Nintendo World</div>
+      <div class="highlight-day">Day 13 · 8 Jun · Osaka</div>
+      <div class="highlight-desc">Mario Kart: Koopa's Challenge + Donkey Kong Country. Power-Up Band earns coins by hitting question blocks around the land. Hogwarts Express too!</div>
+    </div>
+    <div class="highlight-check" id="hl-8" onclick="toggleHL(8)"></div>
+  </div>
+
+  <div class="highlight-card">
+    <div class="highlight-icon">🗼</div>
+    <div class="highlight-meta">
+      <div class="highlight-name">Tokyo Skytree</div>
+      <div class="highlight-day">Day 2 · 28 May · Tokyo</div>
+      <div class="highlight-desc">350m above Tokyo at sunset. The whole city spreads out. On a clear day, Mt Fuji is visible to the southwest.</div>
+    </div>
+    <div class="highlight-check" id="hl-9" onclick="toggleHL(9)"></div>
+  </div>
+
+  <div class="highlight-card">
+    <div class="highlight-icon">☀</div>
+    <div class="highlight-meta">
+      <div class="highlight-name">Shinkansen at 285 km/h</div>
+      <div class="highlight-day">Day 6 · 1 Jun · Odawara → Kyoto</div>
+      <div class="highlight-desc">35 minutes. 285 km/h. Sit on the right side — Mt Fuji fills the window near Shin-Fuji Station if it's clear.</div>
+    </div>
+    <div class="highlight-check" id="hl-10" onclick="toggleHL(10)"></div>
+  </div>
+
+  <div id="son-progress" style="text-align:center;padding:16px;font-size:13px;color:var(--text2);margin-top:8px;"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- PAGE: BOOKINGS -->
+<!-- ═══════════════════════════════════════════════════════ -->
+
+
+<!-- ═══════════ PAGE: BOOKINGS ═══════════ -->
+<div id="page-bookings" class="page">
+  <div class="booking-progress" id="booking-progress"></div>
+  <div id="bookings-list"></div>
+</div>
+
+<!-- ═══════════ PAGE: FOOD ═══════════ -->
+<div id="page-food" class="page">
+
+
+  <div class="note note-green" style="margin-bottom:12px;">
+    <b>Shilpa & Ariv:</b> Lacto-ovo vegetarian — no meat, no fish, no seafood. Eggs and dairy fine.<br>
+    <b>Kranthi:</b> No pork, no beef. Fish and chicken fine.<br><br>
+    Key rule: Always say <b>"Dashi wa tsukawanaide kudasai"</b> to avoid invisible fish stock in broths.
+  </div>
+  <div class="link-row mb8">
+    <a href="https://www.allergyeats.com/japan/" target="_blank" class="link-btn link-book">🃏 Print Allergy Card</a>
+    <a href="https://www.happycow.net/asia/japan/" target="_blank" class="link-btn link-happy">🥗 HappyCow Japan</a>
+    <a href="https://translate.google.com/?sl=ja&tl=en&op=translate" target="_blank" class="link-btn link-translate">📷 Camera Translate</a>
+  </div>
+
+  <div class="food-city-header"><h3>Tokyo · Days 1–4</h3><div class="rating">★★★★★ Excellent — 250+ dedicated vegetarian restaurants</div></div>
+  <div class="food-item"><div class="food-name">T's TanTan, Tokyo Station <span class="food-who food-who-a">All</span></div><div class="food-detail">100% vegan ramen, rich sesame broth. Whole family eats same menu. Day 1 dinner. Kranthi: no pork/beef on menu.</div></div>
+  <div class="food-item"><div class="food-name">Conveyor belt sushi <span class="food-who food-who-a">All</span></div><div class="food-detail">Shilpa & Ariv: kappa maki, avocado, tamagoyaki, inari, oshinko. Kranthi: full fish menu — no pork or beef by default.</div></div>
+  <div class="food-item"><div class="food-name">Natural Lawson <span class="food-who food-who-v">Shilpa + Ariv</span></div><div class="food-detail">Best plant-based convenience store chain. Green branding. Use for breakfast and quick lunches.</div></div>
+  <div class="food-item"><div class="food-name">Omoide Yokocho yakitori <span class="food-who food-who-a">All</span></div><div class="food-detail">Shilpa & Ariv: "yasai kushiyaki" — shiitake, asparagus, leek, corn. Kranthi: chicken/seafood — confirm no pork.</div></div>
+  <div class="food-item"><div class="food-name">Sometaro okonomiyaki, Asakusa <span class="food-who food-who-a">All</span></div><div class="food-detail">Shilpa & Ariv: "yasai okonomiyaki" — vegetables and egg. Kranthi: seafood version — confirm no pork. Cook at table.</div></div>
+  <div class="food-item"><div class="food-name">Ain Soph Journey, Shinjuku <span class="food-who food-who-a">All</span></div><div class="food-detail">Dedicated vegan restaurant. Kranthi eats everything here — no pork/beef. Book ahead.</div></div>
+
+  <div class="food-city-header"><h3>Hakone Ryokan · Days 5–6</h3><div class="rating">★★★ Excellent with advance notice</div></div>
+  <div class="food-item"><div class="food-name">Vegetarian kaiseki <span class="food-who food-who-v">Shilpa + Ariv</span></div><div class="food-detail">Email ryokan 2 weeks before: "Two guests lacto-ovo vegetarian — no meat, no fish, no seafood. Eggs and dairy fine. One adult cannot eat pork or beef."</div></div>
+
+  <div class="food-city-header"><h3>Kyoto · Days 6–11</h3><div class="rating">★★★★★ Japan's best city for vegetarian food</div></div>
+  <div class="food-item"><div class="food-name">Shigetsu at Tenryu-ji <span class="food-who food-who-a">All</span></div><div class="food-detail">Shojin ryori inside UNESCO temple. Tatami room, garden view. ¥4,000–5,000 pp. Pre-booked. Day 7 lunch. Kranthi: entirely suitable — no pork/beef.</div></div>
+  <div class="food-item"><div class="food-name">Kawayuka riverside deck, Pontocho <span class="food-who food-who-a">All</span></div><div class="food-detail">Summer platform over Kamo River. Shilpa & Ariv: tofu, tempura — no dashi. Kranthi: fish — no pork. Day 6 dinner.</div></div>
+  <div class="food-item"><div class="food-name">Gion Kappa shabu-shabu <span class="food-who food-who-a">All</span></div><div class="food-detail">Shilpa & Ariv: vegetable shabu — kombu-only broth. Kranthi: seafood/chicken — no pork/beef. Day 10 farewell dinner.</div></div>
+  <div class="food-item"><div class="food-name">Tofu restaurants, Higashiyama <span class="food-who food-who-v">Shilpa + Ariv</span></div><div class="food-detail">Yudofu, agedashi, dengaku. Look for "tofu ryori" signs. Kranthi: add grilled fish side.</div></div>
+
+  <div class="food-city-header"><h3>Osaka · Day 12 · Via Lake Biwa + Hikone</h3><div class="rating">★★★★ Better than expected</div></div>
+  <div class="food-item"><div class="food-name">Chibo Restaurant, Dotonbori <span class="food-who food-who-a">All</span></div><div class="food-detail">Adjacent to Peace Park. Dedicated vegetarian menu + separate griddle for mum & Ariv. Kranthi: seafood — confirm no pork. Day 11 dinner.</div></div>
+  <div class="food-item"><div class="food-name">Croissant Marché <span class="food-who food-who-v">Shilpa + Ariv</span></div><div class="food-detail">100% vegan café near Peace Park. Good Day 12 breakfast before the museum.</div></div>
+
+  <div class="food-city-header"><h3>Nara · Day 13</h3><div class="rating">★★★ Limited but manageable</div></div>
+  <div class="food-item"><div class="food-name">Momiji-manju <span class="food-who food-who-a">All</span></div><div class="food-detail">Maple leaf pastry, red bean filling. Vegetarian. Everywhere on the island.</div></div>
+  <div class="food-item"><div class="food-name">Grilled oysters <span class="food-who food-who-a">Kranthi + All</span></div><div class="food-detail">Nara has excellent tofu and Buddhist vegetarian food near Todai-ji.</div></div>
+  <div class="food-item"><div class="food-name">Artisan tofu shops <span class="food-who food-who-v">Shilpa + Ariv</span></div><div class="food-detail">Cold silky tofu in cups. Completely vegetarian. On the main shopping lane.</div></div>
+
+  </div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- PAGE: PHRASES -->
+<!-- ═══════════════════════════════════════════════════════ -->
+
+
+<!-- ═══════════ PAGE: PHRASES ═══════════ -->
+<div id="page-phrases" class="page">
+
+  <div class="section-title">Dietary Phrases — Show to Restaurant Staff</div>
+  <div class="note note-green" style="margin-bottom:12px;">Tap any Japanese text to copy it to your clipboard, then paste into Google Translate or show your phone to the staff.</div>
+
+  <div class="phrase-card">
+    <div class="phrase-label">Shilpa & Ariv — Core phrase (show this first)</div>
+    <div class="phrase-jp" onclick="copyText('肉と魚介類は食べられません。卵と乳製品は大丈夫です。')">肉と魚介類は食べられません。卵と乳製品は大丈夫です。<button class="copy-btn">Copy</button></div>
+    <div class="phrase-en">"We cannot eat meat or seafood. Eggs and dairy are fine."</div>
+  </div>
+
+  <div class="phrase-card">
+    <div class="phrase-label">Kranthi — Core phrase</div>
+    <div class="phrase-jp" onclick="copyText('豚肉と牛肉は食べられません。')">豚肉と牛肉は食べられません。<button class="copy-btn">Copy</button></div>
+    <div class="phrase-en">"I cannot eat pork or beef."</div>
+  </div>
+
+  <div class="phrase-card">
+    <div class="phrase-label">No fish stock (dashi) — very important in Japan</div>
+    <div class="phrase-jp" onclick="copyText('だしは使わないでください。')">だしは使わないでください。<button class="copy-btn">Copy</button></div>
+    <div class="phrase-en">"Please do not use fish stock/dashi."</div>
+  </div>
+
+  <div class="phrase-card">
+    <div class="phrase-label">Do you have a vegetarian menu?</div>
+    <div class="phrase-jp" onclick="copyText('ベジタリアンメニューはありますか？')">ベジタリアンメニューはありますか？<button class="copy-btn">Copy</button></div>
+    <div class="phrase-en">"Do you have a vegetarian menu?"</div>
+  </div>
+
+  <div class="phrase-card">
+    <div class="phrase-label">Is this vegetables only?</div>
+    <div class="phrase-jp" onclick="copyText('これは野菜だけですか？')">これは野菜だけですか？<button class="copy-btn">Copy</button></div>
+    <div class="phrase-en">"Is this vegetables only?"</div>
+  </div>
+
+  <div class="phrase-card">
+    <div class="phrase-label">No fish flakes (Nikko yuba / miso soups)</div>
+    <div class="phrase-jp" onclick="copyText('かつおぶしは使わないでください。')">かつおぶしは使わないでください。<button class="copy-btn">Copy</button></div>
+    <div class="phrase-en">"Please do not use fish flakes (katsuobushi)."</div>
+  </div>
+
+  <div class="phrase-card">
+    <div class="phrase-label">Vegetable skewers (yakitori)</div>
+    <div class="phrase-jp" onclick="copyText('野菜串焼きをください。')">野菜串焼きをください。<button class="copy-btn">Copy</button></div>
+    <div class="phrase-en">"Vegetable skewers please."</div>
+  </div>
+
+  <div class="phrase-card">
+    <div class="phrase-label">Vegetable okonomiyaki</div>
+    <div class="phrase-jp" onclick="copyText('野菜のお好み焼きをください。肉と魚介類なしで。')">野菜のお好み焼きをください。肉と魚介類なしで。<button class="copy-btn">Copy</button></div>
+    <div class="phrase-en">"Vegetable okonomiyaki please, no meat or seafood."</div>
+  </div>
+
+  <div class="section-title" style="margin-top:20px;">General Phrases</div>
+
+  <div class="phrase-card">
+    <div class="phrase-label">Thank you very much</div>
+    <div class="phrase-jp" onclick="copyText('ありがとうございます。')">ありがとうございます。<button class="copy-btn">Copy</button></div>
+    <div class="phrase-en">"Arigatou gozaimasu" — thank you very much.</div>
+  </div>
+
+  <div class="phrase-card">
+    <div class="phrase-label">Excuse me / sorry</div>
+    <div class="phrase-jp" onclick="copyText('すみません。')">すみません。<button class="copy-btn">Copy</button></div>
+    <div class="phrase-en">"Sumimasen" — excuse me / to get attention.</div>
+  </div>
+
+  <div class="phrase-card">
+    <div class="phrase-label">How much is this?</div>
+    <div class="phrase-jp" onclick="copyText('これはいくらですか？')">これはいくらですか？<button class="copy-btn">Copy</button></div>
+    <div class="phrase-en">"Kore wa ikura desu ka?" — How much is this?</div>
+  </div>
+
+  <div class="phrase-card">
+    <div class="phrase-label">Where is the toilet?</div>
+    <div class="phrase-jp" onclick="copyText('トイレはどこですか？')">トイレはどこですか？<button class="copy-btn">Copy</button></div>
+    <div class="phrase-en">"Toire wa doko desu ka?"</div>
+  </div>
+
+  <div class="link-row" style="margin-top:12px;">
+    <a href="https://translate.google.com/?sl=en&tl=ja&op=translate" target="_blank" class="link-btn link-translate">📷 Open Google Translate</a>
+    <a href="https://www.allergyeats.com/japan/" target="_blank" class="link-btn link-book">🃏 allergyeats.com Allergy Card</a>
+  </div>
+
+</div>
+
+<!-- ═══════════ PAGE: EXPENSES ═══════════ -->
+<div id="page-expenses" class="page">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+    <div class="section-title" style="margin:0">EXPENSES</div>
+    <div style="font-size:11px;color:var(--ink3);">Tap row to delete</div>
+  </div>
+
+  <!-- Total bar -->
+  <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px 16px;margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;">
+    <div style="font-size:13px;color:var(--ink3);font-weight:500;">TOTAL SPENT</div>
+    <div style="font-family:var(--font-display);font-size:24px;font-weight:700;color:var(--vermillion);" id="exp-total">¥0</div>
+  </div>
+
+  <!-- Category filter -->
+  <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;" id="exp-filters">
+    <button onclick="filterExp('All')" class="exp-filter active" data-cat="All">All</button>
+    <button onclick="filterExp('Food')" class="exp-filter" data-cat="Food">🍜 Food</button>
+    <button onclick="filterExp('Transport')" class="exp-filter" data-cat="Transport">🚄 Transport</button>
+    <button onclick="filterExp('Activities')" class="exp-filter" data-cat="Activities">🎢 Activities</button>
+    <button onclick="filterExp('Shopping')" class="exp-filter" data-cat="Shopping">🛍 Shopping</button>
+    <button onclick="filterExp('Hotel')" class="exp-filter" data-cat="Hotel">🏨 Hotel</button>
+    <button onclick="filterExp('Other')" class="exp-filter" data-cat="Other">• Other</button>
+  </div>
+
+  <!-- Expense list -->
+  <div id="exp-list"></div>
+
+  <!-- Add button -->
+  <button onclick="showAddExp()" style="width:100%;background:var(--vermillion);color:white;border:none;border-radius:var(--radius-sm);padding:14px;font-size:15px;font-weight:600;font-family:var(--font-body);cursor:pointer;margin-top:8px;display:flex;align-items:center;justify-content:center;gap:8px;">
+    <span style="font-size:20px;line-height:1">+</span> Add Expense
+  </button>
+
+  <!-- Add form (hidden by default) -->
+  <div id="exp-form" style="display:none;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;margin-top:12px;">
+    <div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:12px;">New Expense</div>
+    <input id="exp-desc" type="text" placeholder="Description (e.g. Kaiseki dinner)" style="width:100%;padding:10px 12px;border:1px solid var(--border2);border-radius:var(--radius-sm);font-size:14px;font-family:var(--font-body);background:var(--bg);color:var(--ink);box-sizing:border-box;margin-bottom:8px;">
+    <div style="display:flex;gap:8px;margin-bottom:8px;">
+      <input id="exp-amount" type="number" placeholder="Amount (S$)" style="flex:1;padding:10px 12px;border:1px solid var(--border2);border-radius:var(--radius-sm);font-size:14px;font-family:var(--font-body);background:var(--bg);color:var(--ink);">
+      <select id="exp-cat" style="flex:1;padding:10px 12px;border:1px solid var(--border2);border-radius:var(--radius-sm);font-size:14px;font-family:var(--font-body);background:var(--bg);color:var(--ink);">
+        <option>Food</option><option>Transport</option><option>Activities</option><option>Shopping</option><option>Hotel</option><option>Other</option>
+      </select>
+    </div>
+    <div style="display:flex;gap:8px;">
+      <select id="exp-day" style="flex:1;padding:10px 12px;border:1px solid var(--border2);border-radius:var(--radius-sm);font-size:14px;font-family:var(--font-body);background:var(--bg);color:var(--ink);">
+        <option value="">Day...</option>
+        <option value="1">Day 1 · 27 May</option><option value="2">Day 2 · 28 May</option><option value="3">Day 3 · 29 May</option><option value="4">Day 4 · 30 May</option>
+        <option value="5">Day 5 · 31 May</option><option value="6">Day 6 · 1 Jun</option><option value="7">Day 7 · 2 Jun</option><option value="8">Day 8 · 3 Jun</option>
+        <option value="9">Day 9 · 4 Jun</option><option value="10">Day 10 · 5 Jun</option><option value="11">Day 11 · 6 Jun</option><option value="12">Day 12 · 7 Jun</option>
+        <option value="13">Day 13 · 8 Jun</option><option value="14">Day 14 · 9 Jun</option>
+      </select>
+      <select id="exp-who" style="flex:1;padding:10px 12px;border:1px solid var(--border2);border-radius:var(--radius-sm);font-size:14px;font-family:var(--font-body);background:var(--bg);color:var(--ink);">
+        <option value="All">All 3</option><option value="Kranthi">Kranthi</option><option value="Shilpa">Shilpa</option><option value="Ariv">Ariv</option>
+      </select>
+    </div>
+    <div style="display:flex;gap:8px;margin-top:10px;">
+      <button onclick="addExp()" style="flex:1;background:var(--vermillion);color:white;border:none;border-radius:var(--radius-sm);padding:12px;font-size:14px;font-weight:600;font-family:var(--font-body);cursor:pointer;">Save</button>
+      <button onclick="cancelExp()" style="flex:1;background:var(--bg2);color:var(--ink2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px;font-size:14px;font-family:var(--font-body);cursor:pointer;">Cancel</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════ TOAST ═══════════ -->
+<div class="toast" id="toast"></div>
+
+<!-- ═══════════ BOTTOM NAV ═══════════ -->
+<div class="bottom-nav">
+  <button class="nav-btn active" onclick="showPage('overview',this)">
+    <span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg></span>
+    <span class="label">Overview</span>
+  </button>
+  <button class="nav-btn" onclick="showPage('days',this)">
+    <span class="nav-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
+    <span class="label">Days</span>
+  </button>
+  <button class="nav-btn" onclick="showPage('son',this)">
+    <span class="nav-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
+    <span class="label">Highlights</span>
+  </button>
+  <button class="nav-btn" onclick="showPage('bookings',this)">
+    <span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></span>
+    <span class="label">Bookings</span>
+  </button>
+  <button class="nav-btn" onclick="showPage('food',this)">
+    <span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></span>
+    <span class="label">Food</span>
+  </button>
+  <button class="nav-btn" onclick="showPage('phrases',this)">
+    <span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></span>
+    <span class="label">Phrases</span>
+  </button>
+  <button class="nav-btn" onclick="showPage('expenses',this)">
+    <span class="nav-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></span>
+    <span class="label">Expenses</span>
+  </button>
+</div>
+
+<script>
+const BOOKINGS = [
+
+  // ── HOTELS (6) ───────────────────────────────────────────
+  {id:'h0',cat:'Hotels',urg:'now',title:'Tokyo hotel — 5 nights, book from 26 May',detail:'Oshiage/Skytree area (your current hotel — 1 min from station). Book from night of 26 May — room needed when you arrive 01:05 on 27 May. Confirm: family room for 3, accepts late check-in.',url:'https://www.booking.com/searchresults.html?dest_id=-246227&dest_type=city&checkin=2026-05-26&checkout=2026-05-31&group_adults=3'},
+  {id:'h1',cat:'Hotels',urg:'now',title:'Hakone ryokan — 2 nights, 31 May–2 Jun',detail:'Jalan.net or Relux.jp. Must confirm: (1) kashikiri private family bath on 31 May, (2) vegetarian kaiseki for Shilpa & Ariv — no meat, no fish, eggs/dairy fine, (3) no pork/beef for Kranthi. Budget ¥70,000–90,000/night including dinner & breakfast. Email ryokan 2 weeks before to reconfirm dietary requirements.',url:'https://www.jalan.net/en/japan_hotels/area/area_pref_14/',url2:'https://relux.jp'},
+  {id:'h2',cat:'Hotels',urg:'now',title:'Kyoto hotel — 4 nights, 2–7 Jun',detail:'Shijo-Karasuma area (near S$1,031 option on map). 6 min subway to Kyoto Station for early starts (Fushimi Inari 06:15, USJ day trip). Confirm: air conditioning (June is humid), accepts takuhaibin delivery from Hakone.',url:'https://www.airbnb.com/s/Kyoto--Japan/homes?checkin=2026-06-02&checkout=2026-06-07&adults=3',url2:'https://www.booking.com/searchresults.html?dest_id=-235402&dest_type=city&checkin=2026-06-02&checkout=2026-06-07&group_adults=3'},
+  
+  {id:'h4',cat:'Hotels',urg:'now',title:'Osaka hotel — 1 night, 7–8 Jun',detail:'Namba/Shinsaibashi area only. Must be walkable to Dotonbori. Kintetsu-Namba Station nearby for Nara trip next morning. Confirm: accepts hand luggage only (bags already at NRT hotel).',url:'https://www.booking.com/searchresults.html?dest_id=-240905&dest_type=city&checkin=2026-06-07&checkout=2026-06-08&group_adults=3'},
+  {id:'h5',cat:'Hotels',urg:'now',title:'NRT Airport Hotel — 2 nights, 8–10 Jun',detail:'Must be physically inside or bridge-connected to Terminal 1. 2-min walk to Scoot check-in. Confirm: (1) breakfast from 05:00 on 10 Jun, (2) accepts takuhaibin delivery from Kyoto (arrives 8 Jun), (3) can hold bags until morning of 10 Jun.',url:'https://www.booking.com/searchresults.html?dest_id=-246003&dest_type=city&checkin=2026-06-08&checkout=2026-06-10&group_adults=3'},
+
+  // ── FLIGHTS ──────────────────────────────────────────────
+  {id:'f1',cat:'Flights',urg:'now',title:'KIX → NRT — 8 Jun 2026, target 20:00–20:30 departure',detail:'Peach Airlines or Jetstar Japan. Book directly on their websites — cheaper than aggregators. Hand luggage only (main bags already at NRT hotel). Leave Dotonbori farewell meal by 17:00 → Nankai Rapi:t from Namba 17:30 → KIX 18:10. 2-hour buffer before target departure.',url:'https://fly.peach.com',url2:'https://www.jetstar.com/jp/en/home'},
+
+  // ── SHINKANSEN (individual legs) ─────────────────────────
+  
+  {id:'s4b',cat:'Shinkansen',urg:'soon',title:'Shinkansen: Odawara → Kyoto — 2 Jun, ~10:40',detail:'Hikari service. ~2h 15min, ~¥12,320 pp × 3 = ¥36,960. Sit right side — Mt Fuji at Shin-Fuji Station. Buy on Klook before departure.',url:'https://www.klook.com/en-SG/japan-rail/shinkansen/'},
+  {id:'s2',cat:'Shinkansen',urg:'soon',title:'Shinkansen: Kyoto → Shin-Osaka — 3 Jun, 07:45 (USJ day)',detail:'15 min, ~¥1,400 pp × 3 = ¥4,200. Return same day (Shin-Osaka → Kyoto after USJ). Can pay with Suica at machine on the day — no advance booking needed for this short leg.',url:'https://www.klook.com/en-SG/japan-rail/shinkansen/'},
+  {id:'s6',cat:'Shinkansen',urg:'ok',title:'Narita Express: NRT → Tokyo — 9 Jun, 08:30',detail:'53 min, ¥3,070 pp × 3 = ¥9,210. NRT Terminal 1 → Tokyo Station. Buy individual ticket at NRT station or on Klook.',url:'https://www.klook.com/en-SG/activity/378-narita-express-train-ticket-tokyo/'},
+  {id:'s7',cat:'Shinkansen',urg:'ok',title:'Narita Express: Tokyo → NRT — 9 Jun, ~20:30',detail:'53 min, ¥3,070 pp × 3 = ¥9,210. Tokyo Station → NRT Terminal 1. Buy at Tokyo Station or on Klook.',url:'https://www.klook.com/en-SG/activity/378-narita-express-train-ticket-tokyo/'},
+
+  // ── THEME PARKS ──────────────────────────────────────────
+  {id:'p1',cat:'Theme Parks',urg:'now',title:'DisneySea tickets — 28 May 2026 (Thursday)',detail:'tokyodisneyresort.jp — switch App Store to Japan to download Disney app. Pre-reserve Zambini Brothers Ristorante in-app exactly 60 days ahead (29 March) for vegetarian pasta for Shilpa & Ariv.',url:'https://www.tokyodisneyresort.jp/en/'},
+  {id:'p2',cat:'Theme Parks',urg:'now',title:'USJ: Nintendo World Entry Pass + Express Pass — 3 Jun 2026 (Wednesday)',detail:'usj.co.jp — Wednesday = lightest crowds of the week. Buy Express Pass 4 or 7. Register Power-Up Band (¥3,500) in USJ app BEFORE entering park. Nintendo World Entry Pass: 1-hour window — arrive 10 min before allocated slot or lose access for the day.',url:'https://www.usj.co.jp/web/en/us',url2:'https://www.klook.com/en-SG/activity/2062-universal-studios-japan-tickets-osaka/'},
+
+  // ── EXPERIENCES (pre-book required) ──────────────────────
+  {id:'e1',cat:'Pre-bookings',urg:'now',title:'teamLab Borderless, Azabudai Hills — 30 May 2026, 14:00',detail:'borderless.teamlab.art — sells out well in advance. Book the 14:00 slot specifically.',url:'https://borderless.teamlab.art'},
+  {id:'e2',cat:'Pre-bookings',urg:'soon',title:'Odakyu Romancecar to Hakone — 31 May 2026',detail:'odakyu.jp/english/romancecar/ — ¥2,470 pp. Buy Hakone Free Pass (¥6,000 pp/2-day) at same Odakyu counter — covers ropeway, Lake Ashi cruise, Open Air Museum, all local buses. Sunday trains fill up — book well in advance.',url:'https://www.odakyu.jp/english/romancecar/'},
+  {id:'e3',cat:'Pre-bookings',urg:'soon',title:'Tokyo Skytree — Tembo Deck, 28 May 2026, 17:30',detail:'tokyo-skytree.jp — 17:30 slot for sunset. Book online (cheaper than counter).',url:'https://www.tokyo-skytree.jp/en/ticket/'},
+  {id:'e4',cat:'Pre-bookings',urg:'soon',title:'Shigetsu shojin ryori, Tenryu-ji — 2 Jun 2026, 12:00',detail:'tenryuji.com/shokuji — Buddhist vegetarian cuisine in tatami room with garden view. ¥4,000–5,000 pp. Limited sittings — call or email to book. Entirely suitable for all 3 of you.',url:'https://www.tenryuji.com/en/shokuji/'},
+  {id:'e5',cat:'Pre-bookings',urg:'soon',title:'Torokko Romantic Train, Arashiyama — 2 Jun 2026, 14:00',detail:'sagano-kanko.co.jp — book gorge-side window seats. Sells out for June tsuyu season.',url:'https://sagano-kanko.co.jp/en/'},
+
+  {id:'e7',cat:'Pre-bookings',urg:'soon',title:'DisneySea: Zambini Brothers Ristorante — 29 May 2026, 12:30',detail:'Book in Disney app exactly 60 days ahead (29 March 2026). Specify vegetarian pasta for Shilpa & Ariv when booking. Kranthi: pizza/fish options available.',url:'https://www.tokyodisneyresort.jp/en/'},
+
+  // ── TRANSPORT (other) ────────────────────────────────────
+  {id:'t1',cat:'Transport',urg:'ok',title:'Suica IC cards × 3 — pick up at HND arrivals',detail:'Pick up Welcome Suica IC card at HND arrivals kiosk on 27 May. Load ¥5,000 each. Works on all trains, buses, taxis, and convenience stores for all 14 days. No advance booking — just pick up on arrival.',url:null},
+  {id:'t2',cat:'Transport',urg:'now',title:'Car rental 1 — Shinjuku pickup 08:00, 31 May (Hakone)',detail:'Toyota Rent a Car Shinjuku. 2 days (31 May–2 Jun). Request English GPS + ETC card. Return at Odawara branch morning of 2 Jun. Budget: ~¥28,710 incl. one-way fee to Odawara. Book at rent.toyota.co.jp/en',url:'https://rent.toyota.co.jp/en/'}, {id:'t3',cat:'Transport',urg:'now',title:'Car rental 2 — Kyoto Station pickup 09:30, 5 Jun (Kyoto days)',detail:'Toyota Rent a Car Kyoto Station branch. 3 days (5–7 Jun). English GPS + ETC card. Drive Days 10–12: Arashiyama/Miyama/Ohara, Kyoto afternoon circuit, Lake Biwa/Hikone. Return Kyoto Station branch 7 Jun ~15:30. Budget: ~¥24,000 + parking ~¥4,000.',url:'https://rent.toyota.co.jp/en/'}, 
+
+  // ── PREPARATION ──────────────────────────────────────────
+  {id:'x1',cat:'Preparation',urg:'soon',title:'Ryokan dietary email — send 2 weeks before 31 May',detail:'Email ryokan: "Two guests lacto-ovo vegetarian — no meat, no fish, no seafood. Eggs and dairy are fine. One adult cannot eat pork or beef." Also confirm: kashikiri bath time slots (18:00 and 06:00), dinner time (18:00–19:00), breakfast time (08:00).',url:null},
+  {id:'x2',cat:'Preparation',urg:'soon',title:'Chibo Restaurant Dotonbori — call ahead (before 8 Jun)',detail:'Call to confirm vegetarian okonomiyaki is available for Shilpa & Ariv. Kranthi: seafood okonomiyaki — confirm no pork.',url:null},
+  {id:'x3',cat:'Preparation',urg:'ok',title:'Print dietary allergy cards — before departure',detail:'allergyeats.com/japan — print and laminate before departure. Carry one card per person in wallet for entire trip. Covers mum & Ariv (no meat/fish) and Kranthi (no pork/beef).',url:'https://www.allergyeats.com/japan/'},
+  {id:'x4',cat:'Preparation',urg:'ok',title:'Download all apps before departure',detail:'1. Disney app (switch App Store to Japan) · 2. USJ app · 3. Google Maps + download Japan offline maps · 4. Google Translate + Japanese offline pack · 5. HappyCow · 6. ecbo cloak · 7. Bookmark tideschart.com for Lake Biwa tides/weather',url:null},
+  {id:'x5',cat:'Preparation',urg:'ok',title:'IDP (International Driving Permit) — if renting car',detail:'Get IDP from Singapore AA before departure. Valid for 1 year. Required to drive in Japan with Singapore licence.',url:'https://www.aas.com.sg/idp/'},
+
+];
+
+
+// ── BOOKINGS DATA ──────────────────────────────────────────
+
+
+function renderBookings(){
+  const container = document.getElementById('bookings-list');
+  container.innerHTML = '';
+  let done = 0;
+
+  // Group by category
+  const cats = {};
+  BOOKINGS.forEach(b => {
+    if (!cats[b.cat]) cats[b.cat] = [];
+    cats[b.cat].push(b);
+  });
+
+  const catIcons = {
+    'Hotels':'🏨', 'Flights':'✈', 'Shinkansen':'🚄',
+    'Theme Parks':'🎢', 'Pre-bookings':'🎟', 'Transport':'🚆', 'Preparation':'📋'
+  };
+
+  Object.keys(cats).forEach(cat => {
+    // Category header
+    container.innerHTML += `<div style="font-size:11px;font-weight:700;color:var(--grey);letter-spacing:0.08em;text-transform:uppercase;margin:16px 0 8px;">${catIcons[cat]||'•'} ${cat}</div>`;
+
+    cats[cat].forEach(b => {
+      const isDone = getState('booking_'+b.id);
+      if(isDone) done++;
+      const urgLabel = b.urg==='now'?'Book Today':b.urg==='soon'?'Book Soon':'When Ready';
+      const urgClass = b.urg==='now'?'urg-now':b.urg==='soon'?'urg-soon':'urg-ok';
+      const linkBtn = b.url ? `<a href="${b.url}" target="_blank" class="link-btn link-web" style="margin-top:6px;display:inline-flex;">🔗 Book</a>` : '';
+      const linkBtn2 = b.url2 ? `<a href="${b.url2}" target="_blank" class="link-btn link-nav" style="margin-top:6px;display:inline-flex;">🔗 Alternative</a>` : '';
+      container.innerHTML += `
+        <div class="booking-item">
+          <div class="booking-check ${isDone?'done':''}" id="bk-${b.id}" onclick="toggleBooking('${b.id}')">
+            ${isDone?'✓':''}
+          </div>
+          <div class="booking-meta">
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;">
+              <div class="booking-title" style="flex:1">${b.title}</div>
+              <div class="urg-badge ${urgClass}">${urgLabel}</div>
+            </div>
+            <div class="booking-detail">${b.detail}</div>
+            ${linkBtn}${linkBtn2}
+          </div>
+        </div>`;
+    });
+  });
+
+  const pct = Math.round(done/BOOKINGS.length*100);
+  var bpEl = document.getElementById('booking-progress'); if(bpEl) bpEl.textContent = done + ' of ' + BOOKINGS.length + ' confirmed (' + pct + '%)';
+}
+
+function toggleBooking(id){
+  const cur = getState('booking_'+id);
+  setState('booking_'+id, !cur);
+  renderBookings();
+}
+
+// ── LOCAL STORAGE ──────────────────────────────────────────
+function getState(key){ try{ const v=localStorage.getItem(key); return v?JSON.parse(v):false; }catch(e){ return false; } }
+function setState(key,val){ try{ localStorage.setItem(key,JSON.stringify(val)); }catch(e){} }
+
+// ── DAY CARDS ──────────────────────────────────────────────
+function toggleDay(n){
+  const card = document.getElementById('day-'+n);
+  card.classList.toggle('open');
+}
+
+function toggleDayDone(e,n){
+  e.stopPropagation();
+  const cur = getState('day_done_'+n);
+  setState('day_done_'+n, !cur);
+  const el = document.getElementById('daycheck-'+n);
+  if(!cur){ el.classList.add('done'); el.textContent='✓'; }
+  else { el.classList.remove('done'); el.textContent=''; }
+  updateStats();
+}
+
+function toggleAct(e,id){
+  e.stopPropagation();
+  const cur = getState('act_'+id);
+  setState('act_'+id, !cur);
+  const el = e.target.closest('.act-check');
+  if(!cur){ el.classList.add('done'); el.textContent='✓'; }
+  else { el.classList.remove('done'); el.textContent=''; }
+}
+
+function restoreCheckboxes(){
+  for(let n=1;n<=14;n++){
+    if(getState('day_done_'+n)){
+      const el=document.getElementById('daycheck-'+n);
+      if(el){ el.classList.add('done'); el.textContent='✓'; }
+    }
+  }
+  // Restore activity checks
+  document.querySelectorAll('.act-check').forEach(el=>{
+    const id = el.getAttribute('onclick').match(/'([^']+)'/)[1];
+    if(getState('act_'+id)){ el.classList.add('done'); el.textContent='✓'; }
+  });
+}
+
+// ── SON HIGHLIGHTS ──────────────────────────────────────────
+function toggleHL(n){
+  const cur = getState('hl_son_'+n);
+  setState('hl_son_'+n, !cur);
+  const el = document.getElementById('hl-'+n);
+  if(!cur){ el.classList.add('done'); el.textContent='✓'; }
+  else { el.classList.remove('done'); el.textContent=''; }
+  updateSonProgress();
+}
+
+function restoreHL(){
+  for(let n=1;n<=10;n++){
+    if(getState('hl_son_'+n)){
+      const el=document.getElementById('hl-'+n);
+      if(el){ el.classList.add('done'); el.textContent='✓'; }
+    }
+  }
+  updateSonProgress();
+}
+
+function updateSonProgress(){
+  let done=0;
+  for(let n=1;n<=10;n++){ if(getState('hl_son_'+n)) done++; }
+  const el=document.getElementById('son-progress');
+  if(el) el.textContent=`${done} of 10 highlights completed ${done===10?'🎉 Amazing trip!':''}`;
+}
+
+// ── STATS ──────────────────────────────────────────────────
+function updateStats(){
+  let done=0;
+  for(let n=1;n<=14;n++){ if(getState('day_done_'+n)) done++; }
+  const el=document.getElementById('stat-done');
+  if(el) el.textContent=done;
+}
+
+// ── PROGRESS BAR ──────────────────────────────────────────
+function updateProgress(){
+  const start = new Date('2026-05-27');
+  const end   = new Date('2026-06-10');
+  const now   = new Date();
+  const total = end - start;
+  const elapsed = now - start;
+  const pct = Math.max(0, Math.min(100, (elapsed/total)*100));
+  
+  const fill = document.getElementById('prog-fill');
+  if(fill) fill.style.width = pct+'%';
+  const pctEl = document.getElementById('prog-pct');
+  if(pctEl) pctEl.textContent = pct>=1 ? Math.round(pct)+'%' : '0%';
+  
+  const daysLeft = document.getElementById('days-left');
+  const phaseLabel = document.getElementById('phase-label');
+  const today = new Date();
+  const tripStart = new Date('2026-05-27');
+  const dl = Math.ceil((tripStart - today) / 86400000);
+  
+  if(daysLeft) {
+    if(dl > 0) { daysLeft.textContent = dl; if(phaseLabel) phaseLabel.textContent = 'days to go'; }
+    else if(dl === 0) { daysLeft.textContent = 'Today!'; if(phaseLabel) phaseLabel.textContent = 'Trip starts!'; }
+    else {
+      const dayNum = Math.abs(dl) + 1;
+      daysLeft.textContent = 'Day ' + dayNum;
+      if(phaseLabel) phaseLabel.textContent = 'in Japan';
+    }
+  }
+}
+
+function showPage(id, btn){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo(0,0);
+}
+
+// ── MAPS & LINKS ────────────────────────────────────────────
+function openMaps(coords, label){
+  const [lat,lng] = coords.split(',');
+  const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(label)}&query_place_id=`;
+  const mapsUrl = `https://maps.google.com/?q=${lat},${lng}`;
+  window.open(mapsUrl, '_blank');
+}
+
+function navTo(coords, label){
+  const [lat,lng] = coords.split(',');
+  const url = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}&destination_place_id=&travelmode=transit`;
+  window.open(url, '_blank');
+}
+
+// ── COPY ────────────────────────────────────────────────────
+function copyText(text){
+  if(navigator.clipboard){ navigator.clipboard.writeText(text).then(()=>toast('Copied!')); }
+  else { const ta=document.createElement('textarea'); ta.value=text; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); toast('Copied!'); }
+}
+
+function toast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),1800);
+}
+
+// ── INIT ────────────────────────────────────────────────────
+
+// ── ACTIVITY DRAG & DROP REORDER ──────────────────────────
+let dragSrc = null;
+
+function initDragDrop() {
+  document.querySelectorAll('.act-row').forEach(row => {
+    row.setAttribute('draggable', 'true');
+    row.addEventListener('dragstart', e => {
+      dragSrc = row;
+      row.classList.add('dragging');
+      e.dataTransfer.effectAllowed = 'move';
+    });
+    row.addEventListener('dragend', () => {
+      row.classList.remove('dragging');
+      document.querySelectorAll('.act-row').forEach(r => r.classList.remove('drag-over'));
+    });
+    row.addEventListener('dragover', e => {
+      e.preventDefault();
+      e.dataTransfer.dropEffect = 'move';
+      if (row !== dragSrc) row.classList.add('drag-over');
+    });
+    row.addEventListener('dragleave', () => row.classList.remove('drag-over'));
+    row.addEventListener('drop', e => {
+      e.stopPropagation();
+      if (dragSrc !== row) {
+        const parent = row.parentNode;
+        const rows = [...parent.querySelectorAll('.act-row')];
+        const srcIdx = rows.indexOf(dragSrc);
+        const tgtIdx = rows.indexOf(row);
+        if (srcIdx < tgtIdx) parent.insertBefore(dragSrc, row.nextSibling);
+        else parent.insertBefore(dragSrc, row);
+        toast('Activity moved ✓');
+      }
+    });
+  });
+}
+
+// ── DAY SWAP ──────────────────────────────────────────────
+let swapDay1 = null;
+
+function initDaySwap() {
+  document.querySelectorAll('.day-card').forEach(card => {
+    const header = card.querySelector('.day-meta');
+    if (!header) return;
+    const btn = document.createElement('span');
+    btn.className = 'day-swap-btn';
+    btn.textContent = '⇄ Swap day';
+    btn.onclick = (e) => { e.stopPropagation(); selectForSwap(card); };
+    header.appendChild(btn);
+  });
+}
+
+function selectForSwap(card) {
+  if (!swapDay1) {
+    swapDay1 = card;
+    card.classList.add('swap-selected');
+    toast('Now tap another day to swap ⇄');
+  } else if (swapDay1 === card) {
+    swapDay1.classList.remove('swap-selected');
+    swapDay1 = null;
+  } else {
+    // Swap BODY + day title, but keep day number, date, and weather fixed
+    const card1 = swapDay1;
+    const card2 = card;
+
+    const body1 = card1.querySelector('.day-body');
+    const body2 = card2.querySelector('.day-body');
+    const title1 = card1.querySelector('.day-title');
+    const title2 = card2.querySelector('.day-title');
+
+    if (body1 && body2) {
+      // Swap day titles (e.g. 'DisneySea — Full Day')
+      if (title1 && title2) {
+        const tmpTitle = title1.innerHTML;
+        title1.innerHTML = title2.innerHTML;
+        title2.innerHTML = tmpTitle;
+      }
+      // Swap body content (activities, notes, links)
+      const tmp = body1.innerHTML;
+      body1.innerHTML = body2.innerHTML;
+      body2.innerHTML = tmp;
+
+      // Re-attach event listeners after innerHTML swap (drag-drop)
+      [card1, card2].forEach(card => {
+        card.querySelectorAll('.act-row').forEach(row => {
+          row.setAttribute('draggable', 'true');
+          row.addEventListener('dragstart', e => {
+            dragSrc = row;
+            row.classList.add('dragging');
+            e.dataTransfer.effectAllowed = 'move';
+          });
+          row.addEventListener('dragend', () => {
+            row.classList.remove('dragging');
+            document.querySelectorAll('.act-row').forEach(r => r.classList.remove('drag-over'));
+          });
+          row.addEventListener('dragover', e => {
+            e.preventDefault();
+            e.dataTransfer.dropEffect = 'move';
+            if (row !== dragSrc) row.classList.add('drag-over');
+          });
+          row.addEventListener('dragleave', () => row.classList.remove('drag-over'));
+          row.addEventListener('drop', e => {
+            e.stopPropagation();
+            if (dragSrc !== row) {
+              const parent = row.parentNode;
+              const rows = [...parent.querySelectorAll('.act-row')];
+              const srcIdx = rows.indexOf(dragSrc);
+              const tgtIdx = rows.indexOf(row);
+              if (srcIdx < tgtIdx) parent.insertBefore(dragSrc, row.nextSibling);
+              else parent.insertBefore(dragSrc, row);
+              toast('Activity moved ✓');
+            }
+          });
+        });
+
+        // Re-attach swap button
+        const meta = card.querySelector('.day-meta');
+        if (meta && !meta.querySelector('.day-swap-btn')) {
+          const btn = document.createElement('span');
+          btn.className = 'day-swap-btn';
+          btn.textContent = '⇄ Swap day';
+          btn.onclick = (e) => { e.stopPropagation(); selectForSwap(card); };
+          meta.appendChild(btn);
+        }
+      });
+    }
+
+    card1.classList.remove('swap-selected');
+    swapDay1 = null;
+    toast('Activities swapped — dates stay fixed ✓');
+  }
+}
+
+
+
+// ── DAY NOTES ─────────────────────────────────────────────────
+function initNotes() {
+  document.querySelectorAll('.day-card').forEach(function(card) {
+    var dayId = card.id;
+    var stored = localStorage.getItem('note_' + dayId) || '';
+    var wrap = document.createElement('div');
+    wrap.className = 'day-notes-wrap';
+    var label = document.createElement('div');
+    label.className = 'day-notes-label';
+    label.innerHTML = '📝 Notes <span class="notes-saved-badge" id="badge-' + dayId + '">Saved</span>';
+    var ta = document.createElement('textarea');
+    ta.className = 'day-notes-input';
+    ta.placeholder = 'Add notes — what worked, what to remember, how it felt...';
+    ta.value = stored;
+    wrap.appendChild(label);
+    wrap.appendChild(ta);
+    card.appendChild(wrap);
+    var badge = label.querySelector('.notes-saved-badge');
+    var saveTimer;
+    ta.addEventListener('input', function() {
+      clearTimeout(saveTimer);
+      saveTimer = setTimeout(function() {
+        localStorage.setItem('note_' + dayId, ta.value);
+        badge.style.opacity = '1';
+        setTimeout(function() { badge.style.opacity = '0'; }, 1500);
+      }, 600);
+    });
+  });
+}
+
+
+// ── THEME & DARK MODE ─────────────────────────────────────
+function setTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  localStorage.setItem('jp_theme', theme);
+  document.getElementById('btn-japan').classList.toggle('active', theme === 'japan');
+  document.getElementById('btn-minimal').classList.toggle('active', theme === 'minimal');
+}
+
+function toggleDark() {
+  var isDark = document.documentElement.getAttribute('data-dark') === 'true';
+  var newDark = !isDark;
+  document.documentElement.setAttribute('data-dark', newDark);
+  localStorage.setItem('jp_dark', newDark);
+  document.getElementById('dark-toggle').textContent = newDark ? '☀️' : '🌙';
+}
+
+function loadThemePrefs() {
+  var theme = localStorage.getItem('jp_theme') || 'japan';
+  var dark = localStorage.getItem('jp_dark') === 'true';
+  setTheme(theme);
+  if (dark) {
+    document.documentElement.setAttribute('data-dark', 'true');
+    document.getElementById('dark-toggle').textContent = '☀️';
+  }
+}
+
+// ── LIVE WEATHER ──────────────────────────────────────────
+const CITY_COORDS = {
+  1:  {lat:35.6762,lon:139.6503,name:'Tokyo'},
+  2:  {lat:35.6762,lon:139.6503,name:'Tokyo'},
+  3:  {lat:35.6762,lon:139.6503,name:'Tokyo'},
+  4:  {lat:35.6762,lon:139.6503,name:'Tokyo'},
+  5:  {lat:35.2324,lon:139.1069,name:'Hakone'},
+  6:  {lat:34.9076,lon:138.9088,name:'Izu/Hakone'},
+  7:  {lat:35.0116,lon:135.7681,name:'Kyoto'},
+  8:  {lat:34.6654,lon:135.4323,name:'Osaka'},
+  9:  {lat:35.0116,lon:135.7681,name:'Kyoto'},
+  10: {lat:35.0116,lon:135.7681,name:'Kyoto'},
+  11: {lat:35.0116,lon:135.7681,name:'Kyoto'},
+  12: {lat:35.2763,lon:136.2539,name:'Shiga/Osaka'},
+  13: {lat:34.6879,lon:135.5259,name:'Osaka'},
+  14: {lat:35.7720,lon:140.3929,name:'Narita'},
+};
+
+// Trip dates: day 1 = 27 May 2026
+const TRIP_START = new Date('2026-05-27');
+
+const WMO_CODES = {
+  0:'☀',1:'🌤',2:'⛅',3:'☁',
+  45:'🌫',48:'🌫',
+  51:'🌦',53:'🌦',55:'🌧',
+  61:'🌧',63:'🌧',65:'🌧',
+  71:'🌨',73:'🌨',75:'❄',
+  80:'🌦',81:'🌧',82:'⛈',
+  95:'⛈',96:'⛈',99:'⛈',
+};
+
+async function fetchWeatherForDay(dayNum) {
+  var coords = CITY_COORDS[dayNum];
+  if (!coords) return null;
+  var date = new Date(TRIP_START);
+  date.setDate(date.getDate() + dayNum - 1);
+  var dateStr = date.toISOString().split('T')[0];
+  var today = new Date();
+  var daysUntil = Math.floor((date - today) / 86400000);
+  if (daysUntil > 15) return null; // too far ahead
+  if (daysUntil < -1) return null; // in the past
+
+  try {
+    var url = 'https://api.open-meteo.com/v1/forecast?latitude=' + coords.lat +
+      '&longitude=' + coords.lon +
+      '&daily=temperature_2m_max,temperature_2m_min,weathercode,precipitation_probability_max' +
+      '&timezone=Asia/Tokyo&start_date=' + dateStr + '&end_date=' + dateStr;
+    var resp = await fetch(url);
+    var data = await resp.json();
+    if (!data.daily || !data.daily.temperature_2m_max) return null;
+    var tmax = Math.round(data.daily.temperature_2m_max[0]);
+    var tmin = Math.round(data.daily.temperature_2m_min[0]);
+    var code = data.daily.weathercode[0];
+    var rain = data.daily.precipitation_probability_max[0];
+    var icon = WMO_CODES[code] || '🌡';
+    return {icon, tmax, tmin, rain, city: coords.name};
+  } catch(e) { return null; }
+}
+
+async function loadAllWeather() {
+  for (var day = 1; day <= 14; day++) {
+    var card = document.getElementById('day-' + day);
+    if (!card) continue;
+    var weatherEl = card.querySelector('.day-weather');
+    if (!weatherEl) continue;
+    var w = await fetchWeatherForDay(day);
+    if (w) {
+      weatherEl.innerHTML = '<span class="weather-live">' +
+        w.icon + ' ' +
+        '<span class="weather-temp">' + w.tmax + '°C</span>' +
+        ' / ' + w.tmin + '°C' +
+        (w.rain > 20 ? ' · 💧' + w.rain + '%' : '') +
+        ' · ' + w.city +
+        '</span>';
+    }
+    // Small delay to avoid rate limiting
+    await new Promise(r => setTimeout(r, 150));
+  }
+}
+
+
+
+// ── STORAGE ABSTRACTION ───────────────────────────────────────
+// Currently uses localStorage. 
+// To switch to Supabase: set SUPABASE_URL and SUPABASE_KEY below
+// and change USE_SUPABASE to true.
+var SUPABASE_URL = 'https://tcodhdwkgkcygpwdkabp.supabase.co';
+var SUPABASE_KEY = 'sb_publishable_Ir-AR6x7nsq2YAndmtQscw_6H3BODe6';
+var USE_SUPABASE = true;
+
+async function dbGet(key) {
+  if (!USE_SUPABASE) {
+    return localStorage.getItem(key);
+  }
+  try {
+    var res = await fetch(SUPABASE_URL + '/rest/v1/japan_trip?key=eq.' + encodeURIComponent(key) + '&select=value', {
+      headers: { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY, 'Content-Type': 'application/json' }
+    });
+    var data = await res.json();
+    return data.length ? data[0].value : null;
+  } catch(e) {
+    return localStorage.getItem(key); // fallback
+  }
+}
+
+async function dbSet(key, value) {
+  localStorage.setItem(key, value); // always write locally for instant UI
+  if (!USE_SUPABASE) return;
+  try {
+    await fetch(SUPABASE_URL + '/rest/v1/japan_trip', {
+      method: 'POST',
+      headers: {
+        'apikey': SUPABASE_KEY,
+        'Authorization': 'Bearer ' + SUPABASE_KEY,
+        'Content-Type': 'application/json',
+        'Prefer': 'resolution=merge-duplicates'
+      },
+      body: JSON.stringify({ key: key, value: value })
+    });
+  } catch(e) { /* localStorage already saved */ }
+}
+
+// Wrapper for expenses (always uses localStorage for now, easy to migrate)
+function loadExpenses() {
+  return JSON.parse(localStorage.getItem('jp_expenses') || '[]');
+}
+function saveExpenses(list) {
+  localStorage.setItem('jp_expenses', JSON.stringify(list));
+  if (USE_SUPABASE) dbSet('jp_expenses', JSON.stringify(list));
+}
+
+// ── EXPENSES ──────────────────────────────────────────────────
+var expFilter = 'All';
+var CAT_COLORS = {
+  Food:'#C0392B', Transport:'#1a6eb5', Activities:'#2e7d32',
+  Shopping:'#b36b00', Hotel:'#4a3a9c', Other:'#8a9ab0'
+};
+
+function renderExpenses() {
+  var list = loadExpenses();
+  var filtered = expFilter === 'All' ? list : list.filter(function(e){ return e.cat === expFilter; });
+  var total = list.reduce(function(s,e){ return s + parseFloat(e.amount||0); }, 0);
+  var el = document.getElementById('exp-total');
+  if(el) el.textContent = 'S$' + (total/100).toFixed(2);
+  var container = document.getElementById('exp-list');
+  if(!container) return;
+  if(filtered.length === 0) {
+    container.innerHTML = '<div style="text-align:center;padding:32px 0;color:var(--ink4);font-size:13px;">No expenses yet. Tap + to add one.</div>';
+    return;
+  }
+  container.innerHTML = filtered.map(function(exp, i) {
+    var realIdx = list.indexOf(exp);
+    return '<div class="exp-row" onclick="deleteExp(' + realIdx + ')">' +
+      '<div class="exp-cat-dot" style="background:' + (CAT_COLORS[exp.cat]||'#999') + '"></div>' +
+      '<div class="exp-info">' +
+        '<div class="exp-name">' + exp.desc + '</div>' +
+        '<div class="exp-meta">' + exp.cat + (exp.day ? ' · Day ' + exp.day : '') + (exp.who && exp.who !== 'All' ? ' · ' + exp.who : '') + '</div>' +
+      '</div>' +
+      '<div class="exp-amount">¥' + (exp.amount||0).toLocaleString() + '</div>' +
+    '</div>';
+  }).join('');
+}
+
+function showAddExp() {
+  var form = document.getElementById('exp-form');
+  if(form) { form.style.display = 'block'; document.getElementById('exp-desc').focus(); }
+}
+
+function cancelExp() {
+  var form = document.getElementById('exp-form');
+  if(form) form.style.display = 'none';
+}
+
+function addExp() {
+  var desc = document.getElementById('exp-desc').value.trim();
+  var amount = parseInt(document.getElementById('exp-amount').value) || 0;
+  var cat = document.getElementById('exp-cat').value;
+  var day = document.getElementById('exp-day').value;
+  var who = document.getElementById('exp-who').value;
+  if(!desc || !amount) { alert('Please enter description and amount'); return; }
+  var list = loadExpenses();
+  list.push({desc:desc, amount:amount, cat:cat, day:day, who:who, ts:Date.now()});
+  saveExpenses(list);
+  document.getElementById('exp-desc').value = '';
+  document.getElementById('exp-amount').value = '';
+  cancelExp();
+  renderExpenses();
+}
+
+function deleteExp(idx) {
+  if(!confirm('Delete this expense?')) return;
+  var list = loadExpenses();
+  list.splice(idx, 1);
+  saveExpenses(list);
+  renderExpenses();
+}
+
+function filterExp(cat) {
+  expFilter = cat;
+  document.querySelectorAll('.exp-filter').forEach(function(b){
+    b.classList.toggle('active', b.getAttribute('data-cat') === cat);
+  });
+  renderExpenses();
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  updateProgress();
+  updateStats();
+  restoreCheckboxes();
+  restoreHL();
+  renderBookings();
+  initDragDrop();
+  initDaySwap();
+  initNotes();
+  loadThemePrefs();
+  renderExpenses();
+  setTimeout(loadAllWeather, 500);
+});
+
+</script>
+</body>
+</html>
