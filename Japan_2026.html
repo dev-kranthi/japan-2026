@@ -2494,7 +2494,9 @@ function updateProgress(){
   const daysLeft = document.getElementById('days-left');
   const phaseLabel = document.getElementById('phase-label');
   const today = new Date();
-  const tripStart = new Date('2026-05-27');
+  // Use JST (UTC+9) midnight to avoid timezone issues — trip is in Japan
+  const tripStart = new Date('2026-05-27T00:00:00+09:00');
+  const tripEnd   = new Date('2026-06-10T00:00:00+09:00');
   const dl = Math.ceil((tripStart - today) / 86400000);
   
   if(daysLeft) {
@@ -2859,14 +2861,18 @@ async function dbSet(key, value) {
 
 // Expenses — reads from Supabase _cache (populated on loadSharedState), falls back to localStorage
 function loadExpenses() {
-  if ('jp_expenses' in _cache) return _cache['jp_expenses'];
-  return JSON.parse(localStorage.getItem('jp_expenses') || '[]');
+  var val = _cache['jp_expenses'];
+  if (val !== undefined && val !== null) {
+    if (Array.isArray(val)) return val;
+    try { return JSON.parse(val); } catch(e) {}
+  }
+  try { return JSON.parse(localStorage.getItem('jp_expenses') || '[]'); } catch(e) { return []; }
 }
 function saveExpenses(list) {
   _cache['jp_expenses'] = list;
   localStorage.setItem('jp_expenses', JSON.stringify(list));
   _SB.from('japan_trip').upsert({key:'jp_expenses', value:JSON.stringify(list), updated_at:new Date().toISOString()})
-    .catch(e=>console.warn('Supabase expenses write:',e));
+    .then(()=>{}).catch(e=>console.warn('Supabase expenses write:',e));
 }
 
 // ── EXPENSES ──────────────────────────────────────────────────
