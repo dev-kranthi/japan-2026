@@ -2140,7 +2140,7 @@ body {
 <div id="page-expenses" class="page">
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
     <div class="section-title" style="margin:0">EXPENSES</div>
-    <div style="font-size:11px;color:var(--ink3);">Hold row to delete</div>
+    <div style="font-size:11px;color:var(--ink3);">Tap row to delete</div>
   </div>
 
   <!-- Total bar -->
@@ -2854,7 +2854,7 @@ function renderExpenses() {
   }
   container.innerHTML = filtered.map(function(exp, i) {
     var realIdx = list.indexOf(exp);
-    return '<div class="exp-row" ontouchstart="startHold(' + realIdx + ',event)" ontouchend="cancelHold()" ontouchmove="cancelHold()">' +
+    return '<div class="exp-row" onclick="deleteExp(' + realIdx + ')">' +
       '<div class="exp-cat-dot" style="background:' + (CAT_COLORS[exp.cat]||'#999') + '"></div>' +
       '<div class="exp-info">' +
         '<div class="exp-name">' + exp.desc + '</div>' +
