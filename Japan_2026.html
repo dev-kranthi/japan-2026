@@ -2173,7 +2173,11 @@ body {
     <div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:12px;">New Expense</div>
     <input id="exp-desc" type="text" placeholder="Description (e.g. Kaiseki dinner)" style="width:100%;padding:10px 12px;border:1px solid var(--border2);border-radius:var(--radius-sm);font-size:14px;font-family:var(--font-body);background:var(--bg);color:var(--ink);box-sizing:border-box;margin-bottom:8px;">
     <div style="display:flex;gap:8px;margin-bottom:8px;">
-      <input id="exp-amount" type="number" placeholder="Amount (S$)" style="flex:1;padding:10px 12px;border:1px solid var(--border2);border-radius:var(--radius-sm);font-size:14px;font-family:var(--font-body);background:var(--bg);color:var(--ink);">
+      <input id="exp-amount" type="number" placeholder="Amount" style="flex:1;padding:10px 12px;border:1px solid var(--border2);border-radius:var(--radius-sm);font-size:14px;font-family:var(--font-body);background:var(--bg);color:var(--ink);">
+      <select id="exp-currency" style="width:80px;padding:10px 8px;border:1px solid var(--border2);border-radius:var(--radius-sm);font-size:14px;font-family:var(--font-body);background:var(--bg);color:var(--ink);">
+        <option value="SGD">S$</option>
+        <option value="JPY">¥</option>
+      </select>
       <select id="exp-cat" style="flex:1;padding:10px 12px;border:1px solid var(--border2);border-radius:var(--radius-sm);font-size:14px;font-family:var(--font-body);background:var(--bg);color:var(--ink);">
         <option>Food</option><option>Transport</option><option>Activities</option><option>Shopping</option><option>Hotel</option><option>Other</option>
       </select>
@@ -2181,10 +2185,12 @@ body {
     <div style="display:flex;gap:8px;">
       <select id="exp-day" style="flex:1;padding:10px 12px;border:1px solid var(--border2);border-radius:var(--radius-sm);font-size:14px;font-family:var(--font-body);background:var(--bg);color:var(--ink);">
         <option value="">Day...</option>
+        <option value="0">Day 0 · 26 May</option>
         <option value="1">Day 1 · 27 May</option><option value="2">Day 2 · 28 May</option><option value="3">Day 3 · 29 May</option><option value="4">Day 4 · 30 May</option>
         <option value="5">Day 5 · 31 May</option><option value="6">Day 6 · 1 Jun</option><option value="7">Day 7 · 2 Jun</option><option value="8">Day 8 · 3 Jun</option>
         <option value="9">Day 9 · 4 Jun</option><option value="10">Day 10 · 5 Jun</option><option value="11">Day 11 · 6 Jun</option><option value="12">Day 12 · 7 Jun</option>
         <option value="13">Day 13 · 8 Jun</option><option value="14">Day 14 · 9 Jun</option>
+        <option value="15">Day 15 · 10 Jun</option>
       </select>
       <select id="exp-who" style="flex:1;padding:10px 12px;border:1px solid var(--border2);border-radius:var(--radius-sm);font-size:14px;font-family:var(--font-body);background:var(--bg);color:var(--ink);">
         <option value="All">All 3</option><option value="Kranthi">Kranthi</option><option value="Shilpa">Shilpa</option><option value="Ariv">Ariv</option>
@@ -2630,7 +2636,7 @@ function initNotes() {
     label.innerHTML = '📝 Notes <span class="notes-saved-badge" id="badge-' + dayId + '">Saved</span>';
     var ta = document.createElement('textarea');
     ta.className = 'day-notes-input';
-    ta.placeholder = 'Add notes — what worked, what to remember, how it felt...';
+    ta.placeholder = 'Add notes';
     ta.value = stored;
     wrap.appendChild(label);
     wrap.appendChild(ta);
@@ -2848,18 +2854,24 @@ function cancelExp() {
   if(form) form.style.display = 'none';
 }
 
+var JPY_TO_SGD = 1/125;
+
 function addExp() {
   var desc = document.getElementById('exp-desc').value.trim();
-  var amount = parseInt(document.getElementById('exp-amount').value) || 0;
+  var rawAmount = parseFloat(document.getElementById('exp-amount').value) || 0;
+  var currency = document.getElementById('exp-currency').value;
   var cat = document.getElementById('exp-cat').value;
   var day = document.getElementById('exp-day').value;
   var who = document.getElementById('exp-who').value;
-  if(!desc || !amount) { alert('Please enter description and amount'); return; }
+  if(!desc || !rawAmount) { alert('Please enter description and amount'); return; }
+  // Always store in SGD
+  var amountSGD = currency === 'JPY' ? rawAmount * JPY_TO_SGD : rawAmount;
   var list = loadExpenses();
-  list.push({desc:desc, amount:amount, cat:cat, day:day, who:who, ts:Date.now()});
+  list.push({desc:desc, amount:amountSGD, rawAmount:rawAmount, currency:currency, cat:cat, day:day, who:who, ts:Date.now()});
   saveExpenses(list);
   document.getElementById('exp-desc').value = '';
   document.getElementById('exp-amount').value = '';
+  document.getElementById('exp-currency').value = 'SGD';
   cancelExp();
   renderExpenses();
 }
