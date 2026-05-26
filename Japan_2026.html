@@ -2396,6 +2396,10 @@ _SB.channel('japan_sync')
       const ta = document.querySelector('#'+dayId+' .day-notes-ta');
       if(ta && document.activeElement!==ta) ta.value = _cache[key]||'';
     }
+    else if(key === 'jp_expenses'){
+      try{ _cache[key] = JSON.parse(_cache[key]); }catch(e){}
+      renderExpenses();
+    }
   })
   .subscribe();
 
@@ -2853,13 +2857,16 @@ async function dbSet(key, value) {
   } catch(e) { /* localStorage already saved */ }
 }
 
-// Wrapper for expenses (always uses localStorage for now, easy to migrate)
+// Expenses — reads from Supabase _cache (populated on loadSharedState), falls back to localStorage
 function loadExpenses() {
+  if ('jp_expenses' in _cache) return _cache['jp_expenses'];
   return JSON.parse(localStorage.getItem('jp_expenses') || '[]');
 }
 function saveExpenses(list) {
+  _cache['jp_expenses'] = list;
   localStorage.setItem('jp_expenses', JSON.stringify(list));
-  if (USE_SUPABASE) dbSet('jp_expenses', JSON.stringify(list));
+  _SB.from('japan_trip').upsert({key:'jp_expenses', value:JSON.stringify(list), updated_at:new Date().toISOString()})
+    .catch(e=>console.warn('Supabase expenses write:',e));
 }
 
 // ── EXPENSES ──────────────────────────────────────────────────
