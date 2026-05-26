@@ -2140,7 +2140,7 @@ body {
 <div id="page-expenses" class="page">
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
     <div class="section-title" style="margin:0">EXPENSES</div>
-    <div style="font-size:11px;color:var(--ink3);">Tap row to delete</div>
+    <div style="font-size:11px;color:var(--ink3);">Hold row to delete</div>
   </div>
 
   <!-- Total bar -->
@@ -2819,12 +2819,33 @@ var CAT_COLORS = {
   Shopping:'#b36b00', Hotel:'#4a3a9c', Other:'#8a9ab0'
 };
 
+
+// ── LONG PRESS TO DELETE ──────────────────────────────────────
+var holdTimer = null;
+
+function startHold(idx, e) {
+  e.preventDefault();
+  holdTimer = setTimeout(function() {
+    holdTimer = null;
+    if(confirm('Delete this expense?')) {
+      var list = loadExpenses();
+      list.splice(idx, 1);
+      saveExpenses(list);
+      renderExpenses();
+    }
+  }, 800);
+}
+
+function cancelHold() {
+  if(holdTimer) { clearTimeout(holdTimer); holdTimer = null; }
+}
+
 function renderExpenses() {
   var list = loadExpenses();
   var filtered = expFilter === 'All' ? list : list.filter(function(e){ return e.cat === expFilter; });
   var total = list.reduce(function(s,e){ return s + parseFloat(e.amount||0); }, 0);
   var el = document.getElementById('exp-total');
-  if(el) el.textContent = 'S$' + (total/100).toFixed(2);
+  if(el) el.textContent = 'S$' + total.toFixed(2);
   var container = document.getElementById('exp-list');
   if(!container) return;
   if(filtered.length === 0) {
@@ -2833,13 +2854,13 @@ function renderExpenses() {
   }
   container.innerHTML = filtered.map(function(exp, i) {
     var realIdx = list.indexOf(exp);
-    return '<div class="exp-row" onclick="deleteExp(' + realIdx + ')">' +
+    return '<div class="exp-row" ontouchstart="startHold(' + realIdx + ',event)" ontouchend="cancelHold()" ontouchmove="cancelHold()">' +
       '<div class="exp-cat-dot" style="background:' + (CAT_COLORS[exp.cat]||'#999') + '"></div>' +
       '<div class="exp-info">' +
         '<div class="exp-name">' + exp.desc + '</div>' +
         '<div class="exp-meta">' + exp.cat + (exp.day ? ' · Day ' + exp.day : '') + (exp.who && exp.who !== 'All' ? ' · ' + exp.who : '') + '</div>' +
       '</div>' +
-      '<div class="exp-amount">¥' + (exp.amount||0).toLocaleString() + '</div>' +
+      '<div class="exp-amount">' + (exp.currency === "JPY" && exp.rawAmount ? "¥" + Math.round(exp.rawAmount).toLocaleString() + "<br><small style=\"font-size:11px;opacity:0.7\">S$" + parseFloat(exp.amount||0).toFixed(2) + "</small>" : "S$" + parseFloat(exp.amount||0).toFixed(2)) + '</div>' +
     '</div>';
   }).join('');
 }
