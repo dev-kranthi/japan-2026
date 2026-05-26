@@ -1209,6 +1209,7 @@ body {
 .exp-amount { font-size: 14px; font-weight: 600; color: var(--ink); font-family: var(--font-display); }
 
 </style>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 </head>
 <body>
 
@@ -2346,8 +2347,57 @@ function toggleBooking(id){
 }
 
 // ── LOCAL STORAGE ──────────────────────────────────────────
-function getState(key){ try{ const v=localStorage.getItem(key); return v?JSON.parse(v):false; }catch(e){ return false; } }
-function setState(key,val){ try{ localStorage.setItem(key,JSON.stringify(val)); }catch(e){} }
+// ── Supabase shared state ──────────────────────────────────
+const _SB = supabase.createClient(
+  'https://tcodhdwkgkcygpwdkabp.supabase.co',
+  'sb_publishable_Ir-AR6x7nsq2YAndmtQscw_6H3BODe6'
+);
+const _cache = {};
+
+function getState(key){
+  // Returns from cache (populated on load). Falls back to localStorage.
+  if(key in _cache) return _cache[key];
+  try{ const v=localStorage.getItem(key); return v?JSON.parse(v):false; }catch(e){ return false; }
+}
+
+function setState(key,val){
+  _cache[key] = val;
+  // Write to Supabase async (shared) — skip personal prefs
+  if(!key.startsWith('jp_')){
+    _SB.from('japan_trip').upsert({key, value:JSON.stringify(val), updated_at:new Date().toISOString()})
+      .then(()=>{}).catch(e=>console.warn('Supabase write:',e));
+  }
+  // Also write to localStorage as fallback
+  try{ localStorage.setItem(key,JSON.stringify(val)); }catch(e){}
+}
+
+// ── Load all shared state from Supabase on startup ─────────
+async function loadSharedState(){
+  try{
+    const {data} = await _SB.from('japan_trip').select('key,value');
+    (data||[]).forEach(row=>{
+      try{ _cache[row.key] = JSON.parse(row.value); }catch(e){ _cache[row.key] = row.value; }
+    });
+  }catch(e){ console.warn('Supabase load failed, using localStorage:', e); }
+}
+
+// ── Realtime: push changes from other phones to this UI ────
+_SB.channel('japan_sync')
+  .on('postgres_changes',{event:'*',schema:'public',table:'japan_trip'}, payload=>{
+    const {key,value} = payload.new||{};
+    if(!key) return;
+    try{ _cache[key] = JSON.parse(value); }catch(e){ _cache[key] = value; }
+    // Re-render affected UI
+    if(key.startsWith('booking_')){ renderBookings(); updateProgress(); }
+    else if(key.startsWith('day_done_')||key.startsWith('act_')){ restoreCheckboxes(); updateStats(); updateProgress(); }
+    else if(key.startsWith('hl_son_')){ restoreHL(); }
+    else if(key.startsWith('note_')){
+      const dayId = key.replace('note_','');
+      const ta = document.querySelector('#'+dayId+' .day-notes-ta');
+      if(ta && document.activeElement!==ta) ta.value = _cache[key]||'';
+    }
+  })
+  .subscribe();
 
 // ── DAY CARDS ──────────────────────────────────────────────
 function toggleDay(n){
@@ -2914,17 +2964,19 @@ function filterExp(cat) {
 }
 
 document.addEventListener('DOMContentLoaded',()=>{
-  updateProgress();
-  updateStats();
-  restoreCheckboxes();
-  restoreHL();
-  renderBookings();
-  initDragDrop();
-  initDaySwap();
-  initNotes();
-  loadThemePrefs();
-  renderExpenses();
-  setTimeout(loadAllWeather, 500);
+  loadSharedState().then(()=>{
+    updateProgress();
+    updateStats();
+    restoreCheckboxes();
+    restoreHL();
+    renderBookings();
+    initDragDrop();
+    initDaySwap();
+    initNotes();
+    loadThemePrefs();
+    renderExpenses();
+    setTimeout(loadAllWeather, 500);
+  });
 });
 
 </script>
