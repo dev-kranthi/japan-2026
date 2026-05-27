@@ -2684,7 +2684,7 @@ function selectForSwap(card) {
 function initNotes() {
   document.querySelectorAll('.day-card').forEach(function(card) {
     var dayId = card.id;
-    var stored = localStorage.getItem('note_' + dayId) || '';
+    var stored = (_cache['note_' + dayId] !== undefined ? _cache['note_' + dayId] : localStorage.getItem('note_' + dayId)) || '';
     var wrap = document.createElement('div');
     wrap.className = 'day-notes-wrap';
     var label = document.createElement('div');
@@ -2703,6 +2703,9 @@ function initNotes() {
       clearTimeout(saveTimer);
       saveTimer = setTimeout(function() {
         localStorage.setItem('note_' + dayId, ta.value);
+        _cache['note_' + dayId] = ta.value;
+        _SB.from('japan_trip').upsert({key:'note_'+dayId, value:ta.value, updated_at:new Date().toISOString()})
+          .then(()=>{}).catch(e=>console.warn('note sync:',e));
         badge.style.opacity = '1';
         setTimeout(function() { badge.style.opacity = '0'; }, 1500);
       }, 600);
