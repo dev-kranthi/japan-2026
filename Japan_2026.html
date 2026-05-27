@@ -2393,7 +2393,7 @@ _SB.channel('japan_sync')
     else if(key.startsWith('hl_son_')){ restoreHL(); }
     else if(key.startsWith('note_')){
       const dayId = key.replace('note_','');
-      const ta = document.querySelector('#'+dayId+' .day-notes-ta');
+      const ta = document.querySelector('#'+dayId+' .day-notes-input');
       if(ta && document.activeElement!==ta) ta.value = _cache[key]||'';
     }
     else if(key === 'jp_expenses'){
